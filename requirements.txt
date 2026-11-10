@@ -1,0 +1,4 @@
+# Zero mandatory runtime dependencies (runs on standard library)
+# Optional acceleration dependencies:
+# networkx>=3.0
+# numpy>=1.24
