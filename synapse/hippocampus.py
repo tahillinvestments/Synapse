@@ -5,7 +5,7 @@ Uses Personalized PageRank (PPR) over the Knowledge Graph for single-step multi-
 
 from typing import Dict, List, Set, Tuple, Optional
 import math
-from synapse_graph.models import SymbolNode, MemoryEdge, RetrievalResult, LobeType
+from synapse.models import SymbolNode, MemoryEdge, RetrievalResult, LobeType
 
 
 class HippocampalEngine:

@@ -6,7 +6,7 @@ and handles edge invalidation during code evolution.
 
 from typing import Dict, List, Optional, Tuple
 import time
-from synapse_graph.models import SymbolNode, MemoryEdge, EdgeType, LobeType
+from synapse.models import SymbolNode, MemoryEdge, EdgeType, LobeType
 
 
 class TemporalTracker:

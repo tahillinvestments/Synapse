@@ -19,8 +19,8 @@ if CURRENT_DIR not in sys.path:
 if PARENT_DIR not in sys.path:
     sys.path.insert(0, PARENT_DIR)
 
-from synapse_graph.engine import SynapseMemoryEngine
-from synapse_graph.models import SymbolNode, MemoryEdge, LobeType, EdgeType
+from synapse.engine import SynapseMemoryEngine
+from synapse.models import SymbolNode, MemoryEdge, LobeType, EdgeType
 
 
 def get_synapse_dir(project_dir: str) -> str:

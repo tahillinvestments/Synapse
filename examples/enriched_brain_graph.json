@@ -1,0 +1,2437 @@
+{
+  "nodes": [
+    {
+      "id": "mod:db.connection_pool",
+      "name": "connection_pool",
+      "type": "module",
+      "file": "db/connection_pool.py",
+      "lobe": "frontal",
+      "signature": "module db.connection_pool",
+      "docstring": "Database connection pooling and transactional query executor.",
+      "surrogate": "module db.connection_pool (21 lines)",
+      "full_tokens": 243,
+      "surrogate_tokens": 10,
+      "community": 0,
+      "pagerank": 28.19,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 9,
+      "x": 11.15,
+      "y": 16.13,
+      "z": 47.38,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\uddc4\ufe0f Connection Pool",
+      "friendly_domain": "Deep Persistent Vault",
+      "friendly_role": "Master Database Overseer",
+      "friendly_mission": "Manages transactional ACID persistence, maintains connection pools, and guards primary records.",
+      "friendly_power": 91,
+      "friendly_vibe": "ACID Compliant \u2022 Rock-Solid",
+      "sub_items": [
+        {
+          "title": "Active Connection Multiplexer",
+          "type": "Pool Manager",
+          "status": "10/10 Conns",
+          "icon": "\ud83c\udfca",
+          "desc": "Reuses pooled connections to eliminate handshake latency."
+        },
+        {
+          "title": "Indexed User B-Tree Index",
+          "type": "Storage Engine",
+          "status": "Indexed",
+          "icon": "\ud83d\udd0d",
+          "desc": "Primary lookup on credentials & UUIDs."
+        },
+        {
+          "title": "Billing Status Transaction Worker",
+          "type": "Write Pipeline",
+          "status": "Ready",
+          "icon": "\u270d\ufe0f",
+          "desc": "Commits account upgrades with row-level locks."
+        }
+      ],
+      "work_logs": [
+        "Retrieved hydrated user entity usr_88291 in 0.45ms",
+        "Committed tier update transaction to WAL log",
+        "Healthy connection pool lifecycle maintained"
+      ]
+    },
+    {
+      "id": "db.connection_pool:DatabasePool",
+      "name": "DatabasePool",
+      "type": "class",
+      "file": "db/connection_pool.py",
+      "lobe": "frontal",
+      "signature": "class DatabasePool:",
+      "docstring": "Manages database connection lifecycle and transaction safety.",
+      "surrogate": "class DatabasePool:\n    \"\"\"Manages database connection lifecycle and transaction safety.\"\"\"",
+      "full_tokens": 207,
+      "surrogate_tokens": 22,
+      "community": 0,
+      "pagerank": 51.03,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 7,
+      "x": -22.14,
+      "y": 48.14,
+      "z": 65.45,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\uddc4\ufe0f Databasepool",
+      "friendly_domain": "Deep Persistent Vault",
+      "friendly_role": "Master Database Overseer",
+      "friendly_mission": "Manages transactional ACID persistence, maintains connection pools, and guards primary records.",
+      "friendly_power": 91,
+      "friendly_vibe": "ACID Compliant \u2022 Rock-Solid",
+      "sub_items": [
+        {
+          "title": "Active Connection Multiplexer",
+          "type": "Pool Manager",
+          "status": "10/10 Conns",
+          "icon": "\ud83c\udfca",
+          "desc": "Reuses pooled connections to eliminate handshake latency."
+        },
+        {
+          "title": "Indexed User B-Tree Index",
+          "type": "Storage Engine",
+          "status": "Indexed",
+          "icon": "\ud83d\udd0d",
+          "desc": "Primary lookup on credentials & UUIDs."
+        },
+        {
+          "title": "Billing Status Transaction Worker",
+          "type": "Write Pipeline",
+          "status": "Ready",
+          "icon": "\u270d\ufe0f",
+          "desc": "Commits account upgrades with row-level locks."
+        }
+      ],
+      "work_logs": [
+        "Retrieved hydrated user entity usr_88291 in 0.45ms",
+        "Committed tier update transaction to WAL log",
+        "Healthy connection pool lifecycle maintained"
+      ]
+    },
+    {
+      "id": "db.connection_pool:DatabasePool.__init__",
+      "name": "__init__",
+      "type": "method",
+      "file": "db/connection_pool.py",
+      "lobe": "frontal",
+      "signature": "def __init__(self, dsn: str='postgresql://cluster:5432/main'):",
+      "docstring": "No docstring available",
+      "surrogate": "def __init__(self, dsn: str='postgresql://cluster:5432/main'):\n    \"\"\"\"\"\"",
+      "full_tokens": 29,
+      "surrogate_tokens": 18,
+      "community": 0,
+      "pagerank": 12.3,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 1,
+      "x": 31.37,
+      "y": 18.91,
+      "z": 53.99,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\uddc4\ufe0f Init constructor",
+      "friendly_domain": "Deep Persistent Vault",
+      "friendly_role": "Master Database Overseer",
+      "friendly_mission": "Manages transactional ACID persistence, maintains connection pools, and guards primary records.",
+      "friendly_power": 91,
+      "friendly_vibe": "ACID Compliant \u2022 Rock-Solid",
+      "sub_items": [
+        {
+          "title": "Active Connection Multiplexer",
+          "type": "Pool Manager",
+          "status": "10/10 Conns",
+          "icon": "\ud83c\udfca",
+          "desc": "Reuses pooled connections to eliminate handshake latency."
+        },
+        {
+          "title": "Indexed User B-Tree Index",
+          "type": "Storage Engine",
+          "status": "Indexed",
+          "icon": "\ud83d\udd0d",
+          "desc": "Primary lookup on credentials & UUIDs."
+        },
+        {
+          "title": "Billing Status Transaction Worker",
+          "type": "Write Pipeline",
+          "status": "Ready",
+          "icon": "\u270d\ufe0f",
+          "desc": "Commits account upgrades with row-level locks."
+        }
+      ],
+      "work_logs": [
+        "Retrieved hydrated user entity usr_88291 in 0.45ms",
+        "Committed tier update transaction to WAL log",
+        "Healthy connection pool lifecycle maintained"
+      ]
+    },
+    {
+      "id": "db.connection_pool:DatabasePool.find_user_by_credentials",
+      "name": "find_user_by_credentials",
+      "type": "method",
+      "file": "db/connection_pool.py",
+      "lobe": "frontal",
+      "signature": "def find_user_by_credentials(self, username: str, pass_hash: str) -> Optional[UserDTO]:",
+      "docstring": "Executes indexed credential lookup on primary replica.",
+      "surrogate": "def find_user_by_credentials(self, username: str, pass_hash: str) -> Optional[UserDTO]:\n    \"\"\"Executes indexed credential lookup on primary replica.\"\"\"",
+      "full_tokens": 65,
+      "surrogate_tokens": 38,
+      "community": 0,
+      "pagerank": 28.51,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 3,
+      "x": -37.62,
+      "y": 24.84,
+      "z": 57.74,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\udd10 Find User By Credentials",
+      "friendly_domain": "Security & Cyber-Defense",
+      "friendly_role": "Cryptographic Sentinel",
+      "friendly_mission": "Guards the perimeter, issues digital passports, and verifies cryptographic tokens.",
+      "friendly_power": 94,
+      "friendly_vibe": "Vigilant \u2022 Shielded",
+      "sub_items": [
+        {
+          "title": "HMAC-SHA256 Token Vault",
+          "type": "Crypto Engine",
+          "status": "Armored",
+          "icon": "\ud83d\udee1\ufe0f",
+          "desc": "Validates cryptographic signatures against tampering."
+        },
+        {
+          "title": "Claims Expiry Monitor",
+          "type": "Epoch Clock",
+          "status": "Syncing",
+          "icon": "\u23f1\ufe0f",
+          "desc": "Enforces 3600-second session lifetimes."
+        },
+        {
+          "title": "Role & Permission Gate",
+          "type": "Access Layer",
+          "status": "Active",
+          "icon": "\ud83c\udf9f\ufe0f",
+          "desc": "Grants 'admin' and 'user' tier capabilities."
+        }
+      ],
+      "work_logs": [
+        "Validated inbound bearer payload without database trip (0.12ms)",
+        "Dispatched refreshed token payload to Redis memory cache",
+        "Blocked unauthenticated probe attempt"
+      ]
+    },
+    {
+      "id": "db.connection_pool:DatabasePool.get_user_by_id",
+      "name": "get_user_by_id",
+      "type": "method",
+      "file": "db/connection_pool.py",
+      "lobe": "frontal",
+      "signature": "def get_user_by_id(self, user_id: str) -> UserDTO:",
+      "docstring": "Retrieves hydrated user record from primary database.",
+      "surrogate": "def get_user_by_id(self, user_id: str) -> UserDTO:\n    \"\"\"Retrieves hydrated user record from primary database.\"\"\"",
+      "full_tokens": 53,
+      "surrogate_tokens": 28,
+      "community": 0,
+      "pagerank": 28.54,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 3,
+      "x": -37.88,
+      "y": 23.95,
+      "z": 64.24,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\uddc4\ufe0f Get User By Id",
+      "friendly_domain": "Deep Persistent Vault",
+      "friendly_role": "Master Database Overseer",
+      "friendly_mission": "Manages transactional ACID persistence, maintains connection pools, and guards primary records.",
+      "friendly_power": 91,
+      "friendly_vibe": "ACID Compliant \u2022 Rock-Solid",
+      "sub_items": [
+        {
+          "title": "Active Connection Multiplexer",
+          "type": "Pool Manager",
+          "status": "10/10 Conns",
+          "icon": "\ud83c\udfca",
+          "desc": "Reuses pooled connections to eliminate handshake latency."
+        },
+        {
+          "title": "Indexed User B-Tree Index",
+          "type": "Storage Engine",
+          "status": "Indexed",
+          "icon": "\ud83d\udd0d",
+          "desc": "Primary lookup on credentials & UUIDs."
+        },
+        {
+          "title": "Billing Status Transaction Worker",
+          "type": "Write Pipeline",
+          "status": "Ready",
+          "icon": "\u270d\ufe0f",
+          "desc": "Commits account upgrades with row-level locks."
+        }
+      ],
+      "work_logs": [
+        "Retrieved hydrated user entity usr_88291 in 0.45ms",
+        "Committed tier update transaction to WAL log",
+        "Healthy connection pool lifecycle maintained"
+      ]
+    },
+    {
+      "id": "db.connection_pool:DatabasePool.update_billing_status",
+      "name": "update_billing_status",
+      "type": "method",
+      "file": "db/connection_pool.py",
+      "lobe": "frontal",
+      "signature": "def update_billing_status(self, user_id: str, tier: str):",
+      "docstring": "Persists customer subscription tier.",
+      "surrogate": "def update_billing_status(self, user_id: str, tier: str):\n    \"\"\"Persists customer subscription tier.\"\"\"",
+      "full_tokens": 30,
+      "surrogate_tokens": 26,
+      "community": 0,
+      "pagerank": 23.01,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 2,
+      "x": 3.6,
+      "y": 24.92,
+      "z": 61.52,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\udcb3 Update Billing Status",
+      "friendly_domain": "Fintech & Treasury Pipeline",
+      "friendly_role": "Vault Transaction Master",
+      "friendly_mission": "Executes idempotent charge workflows, handles merchant settlement, and upgrades customer tiers.",
+      "friendly_power": 98,
+      "friendly_vibe": "High-Velocity \u2022 Idempotent",
+      "sub_items": [
+        {
+          "title": "Stripe & Network Bridge",
+          "type": "Payment Rail",
+          "status": "Live",
+          "icon": "\u26a1",
+          "desc": "Communicates with payment gateways."
+        },
+        {
+          "title": "Billing Tier State Mutator",
+          "type": "Entitlement Engine",
+          "status": "Ready",
+          "icon": "\ud83d\udc8e",
+          "desc": "Flips customer status to 'premium_active'."
+        },
+        {
+          "title": "Cache Invalidation Emitter",
+          "type": "Session Sweeper",
+          "status": "Armed",
+          "icon": "\ud83e\uddf9",
+          "desc": "Evicts stale sessions to reload entitlements."
+        }
+      ],
+      "work_logs": [
+        "Processed $49.00 payment intent payload successfully",
+        "Updated PostgreSQL customer subscription status",
+        "Evicted user cache to trigger immediate entitlement refresh"
+      ]
+    },
+    {
+      "id": "mod:models.user",
+      "name": "user",
+      "type": "module",
+      "file": "models/user.py",
+      "lobe": "parietal",
+      "signature": "module models.user",
+      "docstring": "Parietal semantic data contracts, schemas, and DTOs.",
+      "surrogate": "module models.user (25 lines)",
+      "full_tokens": 131,
+      "surrogate_tokens": 10,
+      "community": 0,
+      "pagerank": 47.93,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 12,
+      "x": 23.21,
+      "y": 40.23,
+      "z": 17.23,
+      "color": "#a855f7",
+      "friendly_title": "\ud83d\udcd0 User",
+      "friendly_domain": "Architectural Blueprints & Contracts",
+      "friendly_role": "Semantic Schema Weaver",
+      "friendly_mission": "Defines the exact shape of reality: typed parameters, token schemas, and data structures.",
+      "friendly_power": 88,
+      "friendly_vibe": "Strictly-Typed \u2022 Harmonious",
+      "sub_items": [
+        {
+          "title": "TokenPayload Contract",
+          "type": "Schema",
+          "status": "Verified",
+          "icon": "\ud83d\udcdc",
+          "desc": "Strict types for user_id and authorization roles."
+        },
+        {
+          "title": "UserDTO Data Crystal",
+          "type": "Model",
+          "status": "Immutable",
+          "icon": "\ud83d\udc8e",
+          "desc": "Hydrated representation of account state."
+        },
+        {
+          "title": "PaymentRequest Spec",
+          "type": "Intent Blueprint",
+          "status": "Standardized",
+          "icon": "\ud83d\udccb",
+          "desc": "Currency, amount_cents, and user bindings."
+        }
+      ],
+      "work_logs": [
+        "Enforced structural contract on inbound JSON payload",
+        "Prevented type-coercion error at compiler level",
+        "Zero memory footprint surrogate interface cached"
+      ]
+    },
+    {
+      "id": "models.user:TokenPayload",
+      "name": "TokenPayload",
+      "type": "class",
+      "file": "models/user.py",
+      "lobe": "parietal",
+      "signature": "class TokenPayload:",
+      "docstring": "Semantic JWT claims contract.",
+      "surrogate": "class TokenPayload:\n    \"\"\"Semantic JWT claims contract.\"\"\"",
+      "full_tokens": 22,
+      "surrogate_tokens": 14,
+      "community": 0,
+      "pagerank": 42.34,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 5,
+      "x": 14.86,
+      "y": 51.91,
+      "z": -8.78,
+      "color": "#a855f7",
+      "friendly_title": "\ud83d\udd10 Tokenpayload",
+      "friendly_domain": "Security & Cyber-Defense",
+      "friendly_role": "Cryptographic Sentinel",
+      "friendly_mission": "Guards the perimeter, issues digital passports, and verifies cryptographic tokens.",
+      "friendly_power": 94,
+      "friendly_vibe": "Vigilant \u2022 Shielded",
+      "sub_items": [
+        {
+          "title": "HMAC-SHA256 Token Vault",
+          "type": "Crypto Engine",
+          "status": "Armored",
+          "icon": "\ud83d\udee1\ufe0f",
+          "desc": "Validates cryptographic signatures against tampering."
+        },
+        {
+          "title": "Claims Expiry Monitor",
+          "type": "Epoch Clock",
+          "status": "Syncing",
+          "icon": "\u23f1\ufe0f",
+          "desc": "Enforces 3600-second session lifetimes."
+        },
+        {
+          "title": "Role & Permission Gate",
+          "type": "Access Layer",
+          "status": "Active",
+          "icon": "\ud83c\udf9f\ufe0f",
+          "desc": "Grants 'admin' and 'user' tier capabilities."
+        }
+      ],
+      "work_logs": [
+        "Validated inbound bearer payload without database trip (0.12ms)",
+        "Dispatched refreshed token payload to Redis memory cache",
+        "Blocked unauthenticated probe attempt"
+      ]
+    },
+    {
+      "id": "models.user:UserDTO",
+      "name": "UserDTO",
+      "type": "class",
+      "file": "models/user.py",
+      "lobe": "parietal",
+      "signature": "class UserDTO:",
+      "docstring": "Customer entity representation.",
+      "surrogate": "class UserDTO:\n    \"\"\"Customer entity representation.\"\"\"",
+      "full_tokens": 37,
+      "surrogate_tokens": 14,
+      "community": 0,
+      "pagerank": 46.27,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 5,
+      "x": 34.29,
+      "y": 51.78,
+      "z": -11.29,
+      "color": "#a855f7",
+      "friendly_title": "\ud83d\udcd0 Userdto",
+      "friendly_domain": "Architectural Blueprints & Contracts",
+      "friendly_role": "Semantic Schema Weaver",
+      "friendly_mission": "Defines the exact shape of reality: typed parameters, token schemas, and data structures.",
+      "friendly_power": 88,
+      "friendly_vibe": "Strictly-Typed \u2022 Harmonious",
+      "sub_items": [
+        {
+          "title": "TokenPayload Contract",
+          "type": "Schema",
+          "status": "Verified",
+          "icon": "\ud83d\udcdc",
+          "desc": "Strict types for user_id and authorization roles."
+        },
+        {
+          "title": "UserDTO Data Crystal",
+          "type": "Model",
+          "status": "Immutable",
+          "icon": "\ud83d\udc8e",
+          "desc": "Hydrated representation of account state."
+        },
+        {
+          "title": "PaymentRequest Spec",
+          "type": "Intent Blueprint",
+          "status": "Standardized",
+          "icon": "\ud83d\udccb",
+          "desc": "Currency, amount_cents, and user bindings."
+        }
+      ],
+      "work_logs": [
+        "Enforced structural contract on inbound JSON payload",
+        "Prevented type-coercion error at compiler level",
+        "Zero memory footprint surrogate interface cached"
+      ]
+    },
+    {
+      "id": "models.user:PaymentRequest",
+      "name": "PaymentRequest",
+      "type": "class",
+      "file": "models/user.py",
+      "lobe": "parietal",
+      "signature": "class PaymentRequest:",
+      "docstring": "Payment intent specification.",
+      "surrogate": "class PaymentRequest:\n    \"\"\"Payment intent specification.\"\"\"",
+      "full_tokens": 31,
+      "surrogate_tokens": 15,
+      "community": 0,
+      "pagerank": 24.5,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 4,
+      "x": -30.25,
+      "y": 69.66,
+      "z": 9.15,
+      "color": "#a855f7",
+      "friendly_title": "\ud83d\udcb3 Paymentrequest",
+      "friendly_domain": "Fintech & Treasury Pipeline",
+      "friendly_role": "Vault Transaction Master",
+      "friendly_mission": "Executes idempotent charge workflows, handles merchant settlement, and upgrades customer tiers.",
+      "friendly_power": 98,
+      "friendly_vibe": "High-Velocity \u2022 Idempotent",
+      "sub_items": [
+        {
+          "title": "Stripe & Network Bridge",
+          "type": "Payment Rail",
+          "status": "Live",
+          "icon": "\u26a1",
+          "desc": "Communicates with payment gateways."
+        },
+        {
+          "title": "Billing Tier State Mutator",
+          "type": "Entitlement Engine",
+          "status": "Ready",
+          "icon": "\ud83d\udc8e",
+          "desc": "Flips customer status to 'premium_active'."
+        },
+        {
+          "title": "Cache Invalidation Emitter",
+          "type": "Session Sweeper",
+          "status": "Armed",
+          "icon": "\ud83e\uddf9",
+          "desc": "Evicts stale sessions to reload entitlements."
+        }
+      ],
+      "work_logs": [
+        "Processed $49.00 payment intent payload successfully",
+        "Updated PostgreSQL customer subscription status",
+        "Evicted user cache to trigger immediate entitlement refresh"
+      ]
+    },
+    {
+      "id": "mod:payments.processor",
+      "name": "processor",
+      "type": "module",
+      "file": "payments/processor.py",
+      "lobe": "frontal",
+      "signature": "module payments.processor",
+      "docstring": "Payment processing gateway with Stripe/Webhook integration.",
+      "surrogate": "module payments.processor (19 lines)",
+      "full_tokens": 217,
+      "surrogate_tokens": 10,
+      "community": 0,
+      "pagerank": 35.76,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 8,
+      "x": 24.57,
+      "y": 47.84,
+      "z": 59.13,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\udcb3 Processor",
+      "friendly_domain": "Fintech & Treasury Pipeline",
+      "friendly_role": "Vault Transaction Master",
+      "friendly_mission": "Executes idempotent charge workflows, handles merchant settlement, and upgrades customer tiers.",
+      "friendly_power": 98,
+      "friendly_vibe": "High-Velocity \u2022 Idempotent",
+      "sub_items": [
+        {
+          "title": "Stripe & Network Bridge",
+          "type": "Payment Rail",
+          "status": "Live",
+          "icon": "\u26a1",
+          "desc": "Communicates with payment gateways."
+        },
+        {
+          "title": "Billing Tier State Mutator",
+          "type": "Entitlement Engine",
+          "status": "Ready",
+          "icon": "\ud83d\udc8e",
+          "desc": "Flips customer status to 'premium_active'."
+        },
+        {
+          "title": "Cache Invalidation Emitter",
+          "type": "Session Sweeper",
+          "status": "Armed",
+          "icon": "\ud83e\uddf9",
+          "desc": "Evicts stale sessions to reload entitlements."
+        }
+      ],
+      "work_logs": [
+        "Processed $49.00 payment intent payload successfully",
+        "Updated PostgreSQL customer subscription status",
+        "Evicted user cache to trigger immediate entitlement refresh"
+      ]
+    },
+    {
+      "id": "payments.processor:PaymentProcessor",
+      "name": "PaymentProcessor",
+      "type": "class",
+      "file": "payments/processor.py",
+      "lobe": "frontal",
+      "signature": "class PaymentProcessor:",
+      "docstring": "Executes idempotent payment intents and updates customer entitlements.",
+      "surrogate": "class PaymentProcessor:\n    \"\"\"Executes idempotent payment intents and updates customer entitlements.\"\"\"",
+      "full_tokens": 167,
+      "surrogate_tokens": 26,
+      "community": 0,
+      "pagerank": 27.36,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 4,
+      "x": 37.85,
+      "y": 32.03,
+      "z": 59.84,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\udcb3 Paymentprocessor",
+      "friendly_domain": "Fintech & Treasury Pipeline",
+      "friendly_role": "Vault Transaction Master",
+      "friendly_mission": "Executes idempotent charge workflows, handles merchant settlement, and upgrades customer tiers.",
+      "friendly_power": 98,
+      "friendly_vibe": "High-Velocity \u2022 Idempotent",
+      "sub_items": [
+        {
+          "title": "Stripe & Network Bridge",
+          "type": "Payment Rail",
+          "status": "Live",
+          "icon": "\u26a1",
+          "desc": "Communicates with payment gateways."
+        },
+        {
+          "title": "Billing Tier State Mutator",
+          "type": "Entitlement Engine",
+          "status": "Ready",
+          "icon": "\ud83d\udc8e",
+          "desc": "Flips customer status to 'premium_active'."
+        },
+        {
+          "title": "Cache Invalidation Emitter",
+          "type": "Session Sweeper",
+          "status": "Armed",
+          "icon": "\ud83e\uddf9",
+          "desc": "Evicts stale sessions to reload entitlements."
+        }
+      ],
+      "work_logs": [
+        "Processed $49.00 payment intent payload successfully",
+        "Updated PostgreSQL customer subscription status",
+        "Evicted user cache to trigger immediate entitlement refresh"
+      ]
+    },
+    {
+      "id": "payments.processor:PaymentProcessor.__init__",
+      "name": "__init__",
+      "type": "method",
+      "file": "payments/processor.py",
+      "lobe": "frontal",
+      "signature": "def __init__(self, db: DatabasePool, cache: RedisMemoryBridge):",
+      "docstring": "No docstring available",
+      "surrogate": "def __init__(self, db: DatabasePool, cache: RedisMemoryBridge):\n    \"\"\"\"\"\"",
+      "full_tokens": 27,
+      "surrogate_tokens": 18,
+      "community": 0,
+      "pagerank": 12.16,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 1,
+      "x": 26.35,
+      "y": 42.83,
+      "z": 73.78,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\udcb3 Init constructor",
+      "friendly_domain": "Fintech & Treasury Pipeline",
+      "friendly_role": "Vault Transaction Master",
+      "friendly_mission": "Executes idempotent charge workflows, handles merchant settlement, and upgrades customer tiers.",
+      "friendly_power": 98,
+      "friendly_vibe": "High-Velocity \u2022 Idempotent",
+      "sub_items": [
+        {
+          "title": "Stripe & Network Bridge",
+          "type": "Payment Rail",
+          "status": "Live",
+          "icon": "\u26a1",
+          "desc": "Communicates with payment gateways."
+        },
+        {
+          "title": "Billing Tier State Mutator",
+          "type": "Entitlement Engine",
+          "status": "Ready",
+          "icon": "\ud83d\udc8e",
+          "desc": "Flips customer status to 'premium_active'."
+        },
+        {
+          "title": "Cache Invalidation Emitter",
+          "type": "Session Sweeper",
+          "status": "Armed",
+          "icon": "\ud83e\uddf9",
+          "desc": "Evicts stale sessions to reload entitlements."
+        }
+      ],
+      "work_logs": [
+        "Processed $49.00 payment intent payload successfully",
+        "Updated PostgreSQL customer subscription status",
+        "Evicted user cache to trigger immediate entitlement refresh"
+      ]
+    },
+    {
+      "id": "payments.processor:PaymentProcessor.process_charge",
+      "name": "process_charge",
+      "type": "method",
+      "file": "payments/processor.py",
+      "lobe": "frontal",
+      "signature": "def process_charge(self, req: PaymentRequest) -> str:",
+      "docstring": "Dispatches charge transaction to card network and updates customer tier.",
+      "surrogate": "def process_charge(self, req: PaymentRequest) -> str:\n    \"\"\"Dispatches charge transaction to card network and updates customer tier.\"\"\"",
+      "full_tokens": 111,
+      "surrogate_tokens": 34,
+      "community": 0,
+      "pagerank": 37.82,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 5,
+      "x": 6.19,
+      "y": 46.71,
+      "z": 37.06,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\udcb3 Process Charge",
+      "friendly_domain": "Fintech & Treasury Pipeline",
+      "friendly_role": "Vault Transaction Master",
+      "friendly_mission": "Executes idempotent charge workflows, handles merchant settlement, and upgrades customer tiers.",
+      "friendly_power": 98,
+      "friendly_vibe": "High-Velocity \u2022 Idempotent",
+      "sub_items": [
+        {
+          "title": "Stripe & Network Bridge",
+          "type": "Payment Rail",
+          "status": "Live",
+          "icon": "\u26a1",
+          "desc": "Communicates with payment gateways."
+        },
+        {
+          "title": "Billing Tier State Mutator",
+          "type": "Entitlement Engine",
+          "status": "Ready",
+          "icon": "\ud83d\udc8e",
+          "desc": "Flips customer status to 'premium_active'."
+        },
+        {
+          "title": "Cache Invalidation Emitter",
+          "type": "Session Sweeper",
+          "status": "Armed",
+          "icon": "\ud83e\uddf9",
+          "desc": "Evicts stale sessions to reload entitlements."
+        }
+      ],
+      "work_logs": [
+        "Processed $49.00 payment intent payload successfully",
+        "Updated PostgreSQL customer subscription status",
+        "Evicted user cache to trigger immediate entitlement refresh"
+      ]
+    },
+    {
+      "id": "mod:auth.jwt_handler",
+      "name": "jwt_handler",
+      "type": "module",
+      "file": "auth/jwt_handler.py",
+      "lobe": "frontal",
+      "signature": "module auth.jwt_handler",
+      "docstring": "JWT security and cryptographical token handler.",
+      "surrogate": "module auth.jwt_handler (26 lines)",
+      "full_tokens": 266,
+      "surrogate_tokens": 10,
+      "community": 0,
+      "pagerank": 23.85,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 10,
+      "x": -21.77,
+      "y": 28.02,
+      "z": 38.59,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\udd10 Jwt Handler",
+      "friendly_domain": "Security & Cyber-Defense",
+      "friendly_role": "Cryptographic Sentinel",
+      "friendly_mission": "Guards the perimeter, issues digital passports, and verifies cryptographic tokens.",
+      "friendly_power": 94,
+      "friendly_vibe": "Vigilant \u2022 Shielded",
+      "sub_items": [
+        {
+          "title": "HMAC-SHA256 Token Vault",
+          "type": "Crypto Engine",
+          "status": "Armored",
+          "icon": "\ud83d\udee1\ufe0f",
+          "desc": "Validates cryptographic signatures against tampering."
+        },
+        {
+          "title": "Claims Expiry Monitor",
+          "type": "Epoch Clock",
+          "status": "Syncing",
+          "icon": "\u23f1\ufe0f",
+          "desc": "Enforces 3600-second session lifetimes."
+        },
+        {
+          "title": "Role & Permission Gate",
+          "type": "Access Layer",
+          "status": "Active",
+          "icon": "\ud83c\udf9f\ufe0f",
+          "desc": "Grants 'admin' and 'user' tier capabilities."
+        }
+      ],
+      "work_logs": [
+        "Validated inbound bearer payload without database trip (0.12ms)",
+        "Dispatched refreshed token payload to Redis memory cache",
+        "Blocked unauthenticated probe attempt"
+      ]
+    },
+    {
+      "id": "auth.jwt_handler:JWTManager",
+      "name": "JWTManager",
+      "type": "class",
+      "file": "auth/jwt_handler.py",
+      "lobe": "frontal",
+      "signature": "class JWTManager:",
+      "docstring": "Handles JWT generation, claims parsing, and HMAC SHA256 validation.",
+      "surrogate": "class JWTManager:\n    \"\"\"Handles JWT generation, claims parsing, and HMAC SHA256 validation.\"\"\"",
+      "full_tokens": 224,
+      "surrogate_tokens": 23,
+      "community": 0,
+      "pagerank": 40.7,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 5,
+      "x": -21.38,
+      "y": 19.55,
+      "z": 47.51,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\udd10 Jwtmanager",
+      "friendly_domain": "Security & Cyber-Defense",
+      "friendly_role": "Cryptographic Sentinel",
+      "friendly_mission": "Guards the perimeter, issues digital passports, and verifies cryptographic tokens.",
+      "friendly_power": 94,
+      "friendly_vibe": "Vigilant \u2022 Shielded",
+      "sub_items": [
+        {
+          "title": "HMAC-SHA256 Token Vault",
+          "type": "Crypto Engine",
+          "status": "Armored",
+          "icon": "\ud83d\udee1\ufe0f",
+          "desc": "Validates cryptographic signatures against tampering."
+        },
+        {
+          "title": "Claims Expiry Monitor",
+          "type": "Epoch Clock",
+          "status": "Syncing",
+          "icon": "\u23f1\ufe0f",
+          "desc": "Enforces 3600-second session lifetimes."
+        },
+        {
+          "title": "Role & Permission Gate",
+          "type": "Access Layer",
+          "status": "Active",
+          "icon": "\ud83c\udf9f\ufe0f",
+          "desc": "Grants 'admin' and 'user' tier capabilities."
+        }
+      ],
+      "work_logs": [
+        "Validated inbound bearer payload without database trip (0.12ms)",
+        "Dispatched refreshed token payload to Redis memory cache",
+        "Blocked unauthenticated probe attempt"
+      ]
+    },
+    {
+      "id": "auth.jwt_handler:JWTManager.__init__",
+      "name": "__init__",
+      "type": "method",
+      "file": "auth/jwt_handler.py",
+      "lobe": "frontal",
+      "signature": "def __init__(self, secret: str='k3y_s3cr3t_2026'):",
+      "docstring": "No docstring available",
+      "surrogate": "def __init__(self, secret: str='k3y_s3cr3t_2026'):\n    \"\"\"\"\"\"",
+      "full_tokens": 20,
+      "surrogate_tokens": 15,
+      "community": 0,
+      "pagerank": 13.06,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 1,
+      "x": 10.85,
+      "y": 31.42,
+      "z": 51.66,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\udd10 Init constructor",
+      "friendly_domain": "Security & Cyber-Defense",
+      "friendly_role": "Cryptographic Sentinel",
+      "friendly_mission": "Guards the perimeter, issues digital passports, and verifies cryptographic tokens.",
+      "friendly_power": 94,
+      "friendly_vibe": "Vigilant \u2022 Shielded",
+      "sub_items": [
+        {
+          "title": "HMAC-SHA256 Token Vault",
+          "type": "Crypto Engine",
+          "status": "Armored",
+          "icon": "\ud83d\udee1\ufe0f",
+          "desc": "Validates cryptographic signatures against tampering."
+        },
+        {
+          "title": "Claims Expiry Monitor",
+          "type": "Epoch Clock",
+          "status": "Syncing",
+          "icon": "\u23f1\ufe0f",
+          "desc": "Enforces 3600-second session lifetimes."
+        },
+        {
+          "title": "Role & Permission Gate",
+          "type": "Access Layer",
+          "status": "Active",
+          "icon": "\ud83c\udf9f\ufe0f",
+          "desc": "Grants 'admin' and 'user' tier capabilities."
+        }
+      ],
+      "work_logs": [
+        "Validated inbound bearer payload without database trip (0.12ms)",
+        "Dispatched refreshed token payload to Redis memory cache",
+        "Blocked unauthenticated probe attempt"
+      ]
+    },
+    {
+      "id": "auth.jwt_handler:JWTManager.sign_token",
+      "name": "sign_token",
+      "type": "method",
+      "file": "auth/jwt_handler.py",
+      "lobe": "frontal",
+      "signature": "def sign_token(self, payload: TokenPayload) -> str:",
+      "docstring": "Signs user payload into a compact token.",
+      "surrogate": "def sign_token(self, payload: TokenPayload) -> str:\n    \"\"\"Signs user payload into a compact token.\"\"\"",
+      "full_tokens": 96,
+      "surrogate_tokens": 25,
+      "community": 0,
+      "pagerank": 21.41,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 7,
+      "x": -23.24,
+      "y": 27.01,
+      "z": 77.15,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\udd10 Sign Token",
+      "friendly_domain": "Security & Cyber-Defense",
+      "friendly_role": "Cryptographic Sentinel",
+      "friendly_mission": "Guards the perimeter, issues digital passports, and verifies cryptographic tokens.",
+      "friendly_power": 94,
+      "friendly_vibe": "Vigilant \u2022 Shielded",
+      "sub_items": [
+        {
+          "title": "HMAC-SHA256 Token Vault",
+          "type": "Crypto Engine",
+          "status": "Armored",
+          "icon": "\ud83d\udee1\ufe0f",
+          "desc": "Validates cryptographic signatures against tampering."
+        },
+        {
+          "title": "Claims Expiry Monitor",
+          "type": "Epoch Clock",
+          "status": "Syncing",
+          "icon": "\u23f1\ufe0f",
+          "desc": "Enforces 3600-second session lifetimes."
+        },
+        {
+          "title": "Role & Permission Gate",
+          "type": "Access Layer",
+          "status": "Active",
+          "icon": "\ud83c\udf9f\ufe0f",
+          "desc": "Grants 'admin' and 'user' tier capabilities."
+        }
+      ],
+      "work_logs": [
+        "Validated inbound bearer payload without database trip (0.12ms)",
+        "Dispatched refreshed token payload to Redis memory cache",
+        "Blocked unauthenticated probe attempt"
+      ]
+    },
+    {
+      "id": "auth.jwt_handler:JWTManager.verify_token",
+      "name": "verify_token",
+      "type": "method",
+      "file": "auth/jwt_handler.py",
+      "lobe": "frontal",
+      "signature": "def verify_token(self, raw_token: str) -> Optional[TokenPayload]:",
+      "docstring": "Validates token integrity and expiration timestamp.",
+      "surrogate": "def verify_token(self, raw_token: str) -> Optional[TokenPayload]:\n    \"\"\"Validates token integrity and expiration timestamp.\"\"\"",
+      "full_tokens": 80,
+      "surrogate_tokens": 31,
+      "community": 0,
+      "pagerank": 28.63,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 6,
+      "x": 11.84,
+      "y": 42.41,
+      "z": 42.7,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\udd10 Verify Token",
+      "friendly_domain": "Security & Cyber-Defense",
+      "friendly_role": "Cryptographic Sentinel",
+      "friendly_mission": "Guards the perimeter, issues digital passports, and verifies cryptographic tokens.",
+      "friendly_power": 94,
+      "friendly_vibe": "Vigilant \u2022 Shielded",
+      "sub_items": [
+        {
+          "title": "HMAC-SHA256 Token Vault",
+          "type": "Crypto Engine",
+          "status": "Armored",
+          "icon": "\ud83d\udee1\ufe0f",
+          "desc": "Validates cryptographic signatures against tampering."
+        },
+        {
+          "title": "Claims Expiry Monitor",
+          "type": "Epoch Clock",
+          "status": "Syncing",
+          "icon": "\u23f1\ufe0f",
+          "desc": "Enforces 3600-second session lifetimes."
+        },
+        {
+          "title": "Role & Permission Gate",
+          "type": "Access Layer",
+          "status": "Active",
+          "icon": "\ud83c\udf9f\ufe0f",
+          "desc": "Grants 'admin' and 'user' tier capabilities."
+        }
+      ],
+      "work_logs": [
+        "Validated inbound bearer payload without database trip (0.12ms)",
+        "Dispatched refreshed token payload to Redis memory cache",
+        "Blocked unauthenticated probe attempt"
+      ]
+    },
+    {
+      "id": "mod:auth.auth_service",
+      "name": "auth_service",
+      "type": "module",
+      "file": "auth/auth_service.py",
+      "lobe": "frontal",
+      "signature": "module auth.auth_service",
+      "docstring": "Authentication service handling logins, session cache, and permissions.",
+      "surrogate": "module auth.auth_service (32 lines)",
+      "full_tokens": 365,
+      "surrogate_tokens": 10,
+      "community": 0,
+      "pagerank": 52.07,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 11,
+      "x": 18.33,
+      "y": 22.35,
+      "z": 52.08,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\udd10 Auth Service",
+      "friendly_domain": "Security & Cyber-Defense",
+      "friendly_role": "Cryptographic Sentinel",
+      "friendly_mission": "Guards the perimeter, issues digital passports, and verifies cryptographic tokens.",
+      "friendly_power": 94,
+      "friendly_vibe": "Vigilant \u2022 Shielded",
+      "sub_items": [
+        {
+          "title": "HMAC-SHA256 Token Vault",
+          "type": "Crypto Engine",
+          "status": "Armored",
+          "icon": "\ud83d\udee1\ufe0f",
+          "desc": "Validates cryptographic signatures against tampering."
+        },
+        {
+          "title": "Claims Expiry Monitor",
+          "type": "Epoch Clock",
+          "status": "Syncing",
+          "icon": "\u23f1\ufe0f",
+          "desc": "Enforces 3600-second session lifetimes."
+        },
+        {
+          "title": "Role & Permission Gate",
+          "type": "Access Layer",
+          "status": "Active",
+          "icon": "\ud83c\udf9f\ufe0f",
+          "desc": "Grants 'admin' and 'user' tier capabilities."
+        }
+      ],
+      "work_logs": [
+        "Validated inbound bearer payload without database trip (0.12ms)",
+        "Dispatched refreshed token payload to Redis memory cache",
+        "Blocked unauthenticated probe attempt"
+      ]
+    },
+    {
+      "id": "auth.auth_service:AuthService",
+      "name": "AuthService",
+      "type": "class",
+      "file": "auth/auth_service.py",
+      "lobe": "frontal",
+      "signature": "class AuthService:",
+      "docstring": "Core executive authentication service.",
+      "surrogate": "class AuthService:\n    \"\"\"Core executive authentication service.\"\"\"",
+      "full_tokens": 301,
+      "surrogate_tokens": 16,
+      "community": 0,
+      "pagerank": 29.21,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 5,
+      "x": 39.16,
+      "y": 43.8,
+      "z": 60.06,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\udd10 Authservice",
+      "friendly_domain": "Security & Cyber-Defense",
+      "friendly_role": "Cryptographic Sentinel",
+      "friendly_mission": "Guards the perimeter, issues digital passports, and verifies cryptographic tokens.",
+      "friendly_power": 94,
+      "friendly_vibe": "Vigilant \u2022 Shielded",
+      "sub_items": [
+        {
+          "title": "HMAC-SHA256 Token Vault",
+          "type": "Crypto Engine",
+          "status": "Armored",
+          "icon": "\ud83d\udee1\ufe0f",
+          "desc": "Validates cryptographic signatures against tampering."
+        },
+        {
+          "title": "Claims Expiry Monitor",
+          "type": "Epoch Clock",
+          "status": "Syncing",
+          "icon": "\u23f1\ufe0f",
+          "desc": "Enforces 3600-second session lifetimes."
+        },
+        {
+          "title": "Role & Permission Gate",
+          "type": "Access Layer",
+          "status": "Active",
+          "icon": "\ud83c\udf9f\ufe0f",
+          "desc": "Grants 'admin' and 'user' tier capabilities."
+        }
+      ],
+      "work_logs": [
+        "Validated inbound bearer payload without database trip (0.12ms)",
+        "Dispatched refreshed token payload to Redis memory cache",
+        "Blocked unauthenticated probe attempt"
+      ]
+    },
+    {
+      "id": "auth.auth_service:AuthService.__init__",
+      "name": "__init__",
+      "type": "method",
+      "file": "auth/auth_service.py",
+      "lobe": "frontal",
+      "signature": "def __init__(self, jwt_mgr: JWTManager, cache: RedisMemoryBridge, db: DatabasePool):",
+      "docstring": "No docstring available",
+      "surrogate": "def __init__(self, jwt_mgr: JWTManager, cache: RedisMemoryBridge, db: DatabasePool):\n    \"\"\"\"\"\"",
+      "full_tokens": 39,
+      "surrogate_tokens": 23,
+      "community": 0,
+      "pagerank": 10.62,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 1,
+      "x": 14.77,
+      "y": 52.93,
+      "z": 69.92,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\udd10 Init constructor",
+      "friendly_domain": "Security & Cyber-Defense",
+      "friendly_role": "Cryptographic Sentinel",
+      "friendly_mission": "Guards the perimeter, issues digital passports, and verifies cryptographic tokens.",
+      "friendly_power": 94,
+      "friendly_vibe": "Vigilant \u2022 Shielded",
+      "sub_items": [
+        {
+          "title": "HMAC-SHA256 Token Vault",
+          "type": "Crypto Engine",
+          "status": "Armored",
+          "icon": "\ud83d\udee1\ufe0f",
+          "desc": "Validates cryptographic signatures against tampering."
+        },
+        {
+          "title": "Claims Expiry Monitor",
+          "type": "Epoch Clock",
+          "status": "Syncing",
+          "icon": "\u23f1\ufe0f",
+          "desc": "Enforces 3600-second session lifetimes."
+        },
+        {
+          "title": "Role & Permission Gate",
+          "type": "Access Layer",
+          "status": "Active",
+          "icon": "\ud83c\udf9f\ufe0f",
+          "desc": "Grants 'admin' and 'user' tier capabilities."
+        }
+      ],
+      "work_logs": [
+        "Validated inbound bearer payload without database trip (0.12ms)",
+        "Dispatched refreshed token payload to Redis memory cache",
+        "Blocked unauthenticated probe attempt"
+      ]
+    },
+    {
+      "id": "auth.auth_service:AuthService.login",
+      "name": "login",
+      "type": "method",
+      "file": "auth/auth_service.py",
+      "lobe": "frontal",
+      "signature": "def login(self, username: str, password_hash: str) -> str:",
+      "docstring": "Authenticates user credentials, queries DB, and returns token.",
+      "surrogate": "def login(self, username: str, password_hash: str) -> str:\n    \"\"\"Authenticates user credentials, queries DB, and returns token.\"\"\"",
+      "full_tokens": 120,
+      "surrogate_tokens": 32,
+      "community": 0,
+      "pagerank": 49.09,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 7,
+      "x": -21.68,
+      "y": 16.44,
+      "z": 49.2,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\udd10 Login",
+      "friendly_domain": "Security & Cyber-Defense",
+      "friendly_role": "Cryptographic Sentinel",
+      "friendly_mission": "Guards the perimeter, issues digital passports, and verifies cryptographic tokens.",
+      "friendly_power": 94,
+      "friendly_vibe": "Vigilant \u2022 Shielded",
+      "sub_items": [
+        {
+          "title": "HMAC-SHA256 Token Vault",
+          "type": "Crypto Engine",
+          "status": "Armored",
+          "icon": "\ud83d\udee1\ufe0f",
+          "desc": "Validates cryptographic signatures against tampering."
+        },
+        {
+          "title": "Claims Expiry Monitor",
+          "type": "Epoch Clock",
+          "status": "Syncing",
+          "icon": "\u23f1\ufe0f",
+          "desc": "Enforces 3600-second session lifetimes."
+        },
+        {
+          "title": "Role & Permission Gate",
+          "type": "Access Layer",
+          "status": "Active",
+          "icon": "\ud83c\udf9f\ufe0f",
+          "desc": "Grants 'admin' and 'user' tier capabilities."
+        }
+      ],
+      "work_logs": [
+        "Validated inbound bearer payload without database trip (0.12ms)",
+        "Dispatched refreshed token payload to Redis memory cache",
+        "Blocked unauthenticated probe attempt"
+      ]
+    },
+    {
+      "id": "auth.auth_service:AuthService.authenticate_request",
+      "name": "authenticate_request",
+      "type": "method",
+      "file": "auth/auth_service.py",
+      "lobe": "frontal",
+      "signature": "def authenticate_request(self, token: str) -> UserDTO:",
+      "docstring": "Validates incoming HTTP Bearer token against cache and crypto validator.",
+      "surrogate": "def authenticate_request(self, token: str) -> UserDTO:\n    \"\"\"Validates incoming HTTP Bearer token against cache and crypto validator.\"\"\"",
+      "full_tokens": 120,
+      "surrogate_tokens": 34,
+      "community": 0,
+      "pagerank": 44.33,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 8,
+      "x": -18.58,
+      "y": 24.49,
+      "z": 77.43,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\udd10 Authenticate Request",
+      "friendly_domain": "Security & Cyber-Defense",
+      "friendly_role": "Cryptographic Sentinel",
+      "friendly_mission": "Guards the perimeter, issues digital passports, and verifies cryptographic tokens.",
+      "friendly_power": 94,
+      "friendly_vibe": "Vigilant \u2022 Shielded",
+      "sub_items": [
+        {
+          "title": "HMAC-SHA256 Token Vault",
+          "type": "Crypto Engine",
+          "status": "Armored",
+          "icon": "\ud83d\udee1\ufe0f",
+          "desc": "Validates cryptographic signatures against tampering."
+        },
+        {
+          "title": "Claims Expiry Monitor",
+          "type": "Epoch Clock",
+          "status": "Syncing",
+          "icon": "\u23f1\ufe0f",
+          "desc": "Enforces 3600-second session lifetimes."
+        },
+        {
+          "title": "Role & Permission Gate",
+          "type": "Access Layer",
+          "status": "Active",
+          "icon": "\ud83c\udf9f\ufe0f",
+          "desc": "Grants 'admin' and 'user' tier capabilities."
+        }
+      ],
+      "work_logs": [
+        "Validated inbound bearer payload without database trip (0.12ms)",
+        "Dispatched refreshed token payload to Redis memory cache",
+        "Blocked unauthenticated probe attempt"
+      ]
+    },
+    {
+      "id": "mod:api.gateway_routes",
+      "name": "gateway_routes",
+      "type": "module",
+      "file": "api/gateway_routes.py",
+      "lobe": "frontal",
+      "signature": "module api.gateway_routes",
+      "docstring": "Occipital external sensory interface and API endpoints.",
+      "surrogate": "module api.gateway_routes (19 lines)",
+      "full_tokens": 229,
+      "surrogate_tokens": 10,
+      "community": 0,
+      "pagerank": 33.83,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 9,
+      "x": 30.11,
+      "y": 29.16,
+      "z": 64.49,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83c\udf10 Gateway Routes",
+      "friendly_domain": "Sensory Cortex & Public Gateway",
+      "friendly_role": "Sensory Border Dispatcher",
+      "friendly_mission": "Listens to the outside world, inspects incoming HTTP/MCP payloads, and routes signals inward.",
+      "friendly_power": 93,
+      "friendly_vibe": "Public-Facing \u2022 Reactive",
+      "sub_items": [
+        {
+          "title": "Sensory Request Decoder",
+          "type": "Ingress Parser",
+          "status": "Listening",
+          "icon": "\ud83d\udce1",
+          "desc": "Unpacks JSON and headers from external callers."
+        },
+        {
+          "title": "Bearer Auth Interceptor",
+          "type": "Security Wire",
+          "status": "Guarding",
+          "icon": "\ud83d\udea6",
+          "desc": "Requires token before hitting checkout workflows."
+        },
+        {
+          "title": "Internal Service Dispatcher",
+          "type": "Bus Router",
+          "status": "Connected",
+          "icon": "\ud83d\udd00",
+          "desc": "Hands off tasks to payment and auth services."
+        }
+      ],
+      "work_logs": [
+        "Intercepted POST /payments/checkout sensory packet",
+        "Authenticated bearer header with Sentinel unit",
+        "Dispatched order payload to Treasury Master"
+      ]
+    },
+    {
+      "id": "api.gateway_routes:route_login",
+      "name": "route_login",
+      "type": "function",
+      "file": "api/gateway_routes.py",
+      "lobe": "frontal",
+      "signature": "def route_login(auth: AuthService, credentials: dict):",
+      "docstring": "POST /auth/login - External authentication sensory ingress.",
+      "surrogate": "def route_login(auth: AuthService, credentials: dict):\n    \"\"\"POST /auth/login - External authentication sensory ingress.\"\"\"",
+      "full_tokens": 51,
+      "surrogate_tokens": 31,
+      "community": 0,
+      "pagerank": 11.78,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 4,
+      "x": -8.35,
+      "y": 56.15,
+      "z": 55.65,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\udd10 Route Login",
+      "friendly_domain": "Security & Cyber-Defense",
+      "friendly_role": "Cryptographic Sentinel",
+      "friendly_mission": "Guards the perimeter, issues digital passports, and verifies cryptographic tokens.",
+      "friendly_power": 94,
+      "friendly_vibe": "Vigilant \u2022 Shielded",
+      "sub_items": [
+        {
+          "title": "HMAC-SHA256 Token Vault",
+          "type": "Crypto Engine",
+          "status": "Armored",
+          "icon": "\ud83d\udee1\ufe0f",
+          "desc": "Validates cryptographic signatures against tampering."
+        },
+        {
+          "title": "Claims Expiry Monitor",
+          "type": "Epoch Clock",
+          "status": "Syncing",
+          "icon": "\u23f1\ufe0f",
+          "desc": "Enforces 3600-second session lifetimes."
+        },
+        {
+          "title": "Role & Permission Gate",
+          "type": "Access Layer",
+          "status": "Active",
+          "icon": "\ud83c\udf9f\ufe0f",
+          "desc": "Grants 'admin' and 'user' tier capabilities."
+        }
+      ],
+      "work_logs": [
+        "Validated inbound bearer payload without database trip (0.12ms)",
+        "Dispatched refreshed token payload to Redis memory cache",
+        "Blocked unauthenticated probe attempt"
+      ]
+    },
+    {
+      "id": "api.gateway_routes:route_checkout",
+      "name": "route_checkout",
+      "type": "function",
+      "file": "api/gateway_routes.py",
+      "lobe": "frontal",
+      "signature": "def route_checkout(payment: PaymentProcessor, auth: AuthService, token: str, amount: int):",
+      "docstring": "POST /payments/checkout - Secure charge endpoint with bearer auth validation.",
+      "surrogate": "def route_checkout(payment: PaymentProcessor, auth: AuthService, token: str, amount: int):\n    \"\"\"POST /payments/checkout - Secure charge endpoint with bearer auth validation.\"\"\"",
+      "full_tokens": 82,
+      "surrogate_tokens": 44,
+      "community": 0,
+      "pagerank": 22.36,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 4,
+      "x": -18.81,
+      "y": 26.1,
+      "z": 60.26,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83d\udcb3 Route Checkout",
+      "friendly_domain": "Fintech & Treasury Pipeline",
+      "friendly_role": "Vault Transaction Master",
+      "friendly_mission": "Executes idempotent charge workflows, handles merchant settlement, and upgrades customer tiers.",
+      "friendly_power": 98,
+      "friendly_vibe": "High-Velocity \u2022 Idempotent",
+      "sub_items": [
+        {
+          "title": "Stripe & Network Bridge",
+          "type": "Payment Rail",
+          "status": "Live",
+          "icon": "\u26a1",
+          "desc": "Communicates with payment gateways."
+        },
+        {
+          "title": "Billing Tier State Mutator",
+          "type": "Entitlement Engine",
+          "status": "Ready",
+          "icon": "\ud83d\udc8e",
+          "desc": "Flips customer status to 'premium_active'."
+        },
+        {
+          "title": "Cache Invalidation Emitter",
+          "type": "Session Sweeper",
+          "status": "Armed",
+          "icon": "\ud83e\uddf9",
+          "desc": "Evicts stale sessions to reload entitlements."
+        }
+      ],
+      "work_logs": [
+        "Processed $49.00 payment intent payload successfully",
+        "Updated PostgreSQL customer subscription status",
+        "Evicted user cache to trigger immediate entitlement refresh"
+      ]
+    },
+    {
+      "id": "api.gateway_routes:route_profile",
+      "name": "route_profile",
+      "type": "function",
+      "file": "api/gateway_routes.py",
+      "lobe": "frontal",
+      "signature": "def route_profile(auth: AuthService, token: str):",
+      "docstring": "GET /user/profile - Returns verified profile payload.",
+      "surrogate": "def route_profile(auth: AuthService, token: str):\n    \"\"\"GET /user/profile - Returns verified profile payload.\"\"\"",
+      "full_tokens": 39,
+      "surrogate_tokens": 28,
+      "community": 0,
+      "pagerank": 11.79,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 2,
+      "x": -18.98,
+      "y": 41.31,
+      "z": 75.4,
+      "color": "#38bdf8",
+      "friendly_title": "\ud83c\udf10 Route Profile",
+      "friendly_domain": "Sensory Cortex & Public Gateway",
+      "friendly_role": "Sensory Border Dispatcher",
+      "friendly_mission": "Listens to the outside world, inspects incoming HTTP/MCP payloads, and routes signals inward.",
+      "friendly_power": 93,
+      "friendly_vibe": "Public-Facing \u2022 Reactive",
+      "sub_items": [
+        {
+          "title": "Sensory Request Decoder",
+          "type": "Ingress Parser",
+          "status": "Listening",
+          "icon": "\ud83d\udce1",
+          "desc": "Unpacks JSON and headers from external callers."
+        },
+        {
+          "title": "Bearer Auth Interceptor",
+          "type": "Security Wire",
+          "status": "Guarding",
+          "icon": "\ud83d\udea6",
+          "desc": "Requires token before hitting checkout workflows."
+        },
+        {
+          "title": "Internal Service Dispatcher",
+          "type": "Bus Router",
+          "status": "Connected",
+          "icon": "\ud83d\udd00",
+          "desc": "Hands off tasks to payment and auth services."
+        }
+      ],
+      "work_logs": [
+        "Intercepted POST /payments/checkout sensory packet",
+        "Authenticated bearer header with Sentinel unit",
+        "Dispatched order payload to Treasury Master"
+      ]
+    },
+    {
+      "id": "mod:cache.redis_bridge",
+      "name": "redis_bridge",
+      "type": "module",
+      "file": "cache/redis_bridge.py",
+      "lobe": "frontal",
+      "signature": "module cache.redis_bridge",
+      "docstring": "High-throughput associative cache bridge with TTL.",
+      "surrogate": "module cache.redis_bridge (21 lines)",
+      "full_tokens": 222,
+      "surrogate_tokens": 10,
+      "community": 0,
+      "pagerank": 17.41,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 6,
+      "x": -8.05,
+      "y": 24.87,
+      "z": 79.89,
+      "color": "#38bdf8",
+      "friendly_title": "\u26a1 Redis Bridge",
+      "friendly_domain": "Synaptic Flash Recall",
+      "friendly_role": "Sub-Millisecond Memory Core",
+      "friendly_mission": "Caches active sessions in high-speed volatile storage, cutting DB load by 98%.",
+      "friendly_power": 99,
+      "friendly_vibe": "Ultra-Fast \u2022 Ephemeral",
+      "sub_items": [
+        {
+          "title": "Hot Key In-Memory Store",
+          "type": "RAM Buffer",
+          "status": "Optimal",
+          "icon": "\ud83d\udd25",
+          "desc": "Instantaneous dictionary lookup at memory speeds."
+        },
+        {
+          "title": "TTL Eviction Sweeper",
+          "type": "Garbage Collector",
+          "status": "Running",
+          "icon": "\u23f3",
+          "desc": "Auto-expires inactive user sessions."
+        },
+        {
+          "title": "Zero-Latency Bridge",
+          "type": "I/O Multiplexer",
+          "status": "Connected",
+          "icon": "\ud83d\udd0c",
+          "desc": "Connects authentication layer directly to RAM."
+        }
+      ],
+      "work_logs": [
+        "Served active token claims in 0.04ms (Cache Hit Rate: 99.4%)",
+        "Purged invalidated token session:usr_88291 upon security signal",
+        "Maintained 10,000 parallel connection descriptors"
+      ]
+    },
+    {
+      "id": "cache.redis_bridge:RedisMemoryBridge",
+      "name": "RedisMemoryBridge",
+      "type": "class",
+      "file": "cache/redis_bridge.py",
+      "lobe": "frontal",
+      "signature": "class RedisMemoryBridge:",
+      "docstring": "Associative bridge for fast session recall and edge caching.",
+      "surrogate": "class RedisMemoryBridge:\n    \"\"\"Associative bridge for fast session recall and edge caching.\"\"\"",
+      "full_tokens": 199,
+      "surrogate_tokens": 23,
+      "community": 0,
+      "pagerank": 61.22,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 7,
+      "x": 0.76,
+      "y": 19.09,
+      "z": 37.12,
+      "color": "#38bdf8",
+      "friendly_title": "\u26a1 Redismemorybridge",
+      "friendly_domain": "Synaptic Flash Recall",
+      "friendly_role": "Sub-Millisecond Memory Core",
+      "friendly_mission": "Caches active sessions in high-speed volatile storage, cutting DB load by 98%.",
+      "friendly_power": 99,
+      "friendly_vibe": "Ultra-Fast \u2022 Ephemeral",
+      "sub_items": [
+        {
+          "title": "Hot Key In-Memory Store",
+          "type": "RAM Buffer",
+          "status": "Optimal",
+          "icon": "\ud83d\udd25",
+          "desc": "Instantaneous dictionary lookup at memory speeds."
+        },
+        {
+          "title": "TTL Eviction Sweeper",
+          "type": "Garbage Collector",
+          "status": "Running",
+          "icon": "\u23f3",
+          "desc": "Auto-expires inactive user sessions."
+        },
+        {
+          "title": "Zero-Latency Bridge",
+          "type": "I/O Multiplexer",
+          "status": "Connected",
+          "icon": "\ud83d\udd0c",
+          "desc": "Connects authentication layer directly to RAM."
+        }
+      ],
+      "work_logs": [
+        "Served active token claims in 0.04ms (Cache Hit Rate: 99.4%)",
+        "Purged invalidated token session:usr_88291 upon security signal",
+        "Maintained 10,000 parallel connection descriptors"
+      ]
+    },
+    {
+      "id": "cache.redis_bridge:RedisMemoryBridge.__init__",
+      "name": "__init__",
+      "type": "method",
+      "file": "cache/redis_bridge.py",
+      "lobe": "frontal",
+      "signature": "def __init__(self, host: str='localhost', port: int=6379):",
+      "docstring": "No docstring available",
+      "surrogate": "def __init__(self, host: str='localhost', port: int=6379):\n    \"\"\"\"\"\"",
+      "full_tokens": 38,
+      "surrogate_tokens": 17,
+      "community": 0,
+      "pagerank": 13.87,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 1,
+      "x": -31.23,
+      "y": 43.24,
+      "z": 70.64,
+      "color": "#38bdf8",
+      "friendly_title": "\u26a1 Init constructor",
+      "friendly_domain": "Synaptic Flash Recall",
+      "friendly_role": "Sub-Millisecond Memory Core",
+      "friendly_mission": "Caches active sessions in high-speed volatile storage, cutting DB load by 98%.",
+      "friendly_power": 99,
+      "friendly_vibe": "Ultra-Fast \u2022 Ephemeral",
+      "sub_items": [
+        {
+          "title": "Hot Key In-Memory Store",
+          "type": "RAM Buffer",
+          "status": "Optimal",
+          "icon": "\ud83d\udd25",
+          "desc": "Instantaneous dictionary lookup at memory speeds."
+        },
+        {
+          "title": "TTL Eviction Sweeper",
+          "type": "Garbage Collector",
+          "status": "Running",
+          "icon": "\u23f3",
+          "desc": "Auto-expires inactive user sessions."
+        },
+        {
+          "title": "Zero-Latency Bridge",
+          "type": "I/O Multiplexer",
+          "status": "Connected",
+          "icon": "\ud83d\udd0c",
+          "desc": "Connects authentication layer directly to RAM."
+        }
+      ],
+      "work_logs": [
+        "Served active token claims in 0.04ms (Cache Hit Rate: 99.4%)",
+        "Purged invalidated token session:usr_88291 upon security signal",
+        "Maintained 10,000 parallel connection descriptors"
+      ]
+    },
+    {
+      "id": "cache.redis_bridge:RedisMemoryBridge.store_session",
+      "name": "store_session",
+      "type": "method",
+      "file": "cache/redis_bridge.py",
+      "lobe": "frontal",
+      "signature": "def store_session(self, user_id: str, session_token: str, ttl_seconds: int=3600):",
+      "docstring": "Indexes active session token with expiration.",
+      "surrogate": "def store_session(self, user_id: str, session_token: str, ttl_seconds: int=3600):\n    \"\"\"Indexes active session token with expiration.\"\"\"",
+      "full_tokens": 50,
+      "surrogate_tokens": 34,
+      "community": 0,
+      "pagerank": 22.22,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 2,
+      "x": -6.23,
+      "y": 17.86,
+      "z": 52.17,
+      "color": "#38bdf8",
+      "friendly_title": "\u26a1 Store Session",
+      "friendly_domain": "Synaptic Flash Recall",
+      "friendly_role": "Sub-Millisecond Memory Core",
+      "friendly_mission": "Caches active sessions in high-speed volatile storage, cutting DB load by 98%.",
+      "friendly_power": 99,
+      "friendly_vibe": "Ultra-Fast \u2022 Ephemeral",
+      "sub_items": [
+        {
+          "title": "Hot Key In-Memory Store",
+          "type": "RAM Buffer",
+          "status": "Optimal",
+          "icon": "\ud83d\udd25",
+          "desc": "Instantaneous dictionary lookup at memory speeds."
+        },
+        {
+          "title": "TTL Eviction Sweeper",
+          "type": "Garbage Collector",
+          "status": "Running",
+          "icon": "\u23f3",
+          "desc": "Auto-expires inactive user sessions."
+        },
+        {
+          "title": "Zero-Latency Bridge",
+          "type": "I/O Multiplexer",
+          "status": "Connected",
+          "icon": "\ud83d\udd0c",
+          "desc": "Connects authentication layer directly to RAM."
+        }
+      ],
+      "work_logs": [
+        "Served active token claims in 0.04ms (Cache Hit Rate: 99.4%)",
+        "Purged invalidated token session:usr_88291 upon security signal",
+        "Maintained 10,000 parallel connection descriptors"
+      ]
+    },
+    {
+      "id": "cache.redis_bridge:RedisMemoryBridge.get_session",
+      "name": "get_session",
+      "type": "method",
+      "file": "cache/redis_bridge.py",
+      "lobe": "frontal",
+      "signature": "def get_session(self, user_id: str) -> Optional[str]:",
+      "docstring": "Fetches active session token from cache.",
+      "surrogate": "def get_session(self, user_id: str) -> Optional[str]:\n    \"\"\"Fetches active session token from cache.\"\"\"",
+      "full_tokens": 40,
+      "surrogate_tokens": 26,
+      "community": 0,
+      "pagerank": 22.25,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 3,
+      "x": 39.69,
+      "y": 38.81,
+      "z": 78.7,
+      "color": "#38bdf8",
+      "friendly_title": "\u26a1 Get Session",
+      "friendly_domain": "Synaptic Flash Recall",
+      "friendly_role": "Sub-Millisecond Memory Core",
+      "friendly_mission": "Caches active sessions in high-speed volatile storage, cutting DB load by 98%.",
+      "friendly_power": 99,
+      "friendly_vibe": "Ultra-Fast \u2022 Ephemeral",
+      "sub_items": [
+        {
+          "title": "Hot Key In-Memory Store",
+          "type": "RAM Buffer",
+          "status": "Optimal",
+          "icon": "\ud83d\udd25",
+          "desc": "Instantaneous dictionary lookup at memory speeds."
+        },
+        {
+          "title": "TTL Eviction Sweeper",
+          "type": "Garbage Collector",
+          "status": "Running",
+          "icon": "\u23f3",
+          "desc": "Auto-expires inactive user sessions."
+        },
+        {
+          "title": "Zero-Latency Bridge",
+          "type": "I/O Multiplexer",
+          "status": "Connected",
+          "icon": "\ud83d\udd0c",
+          "desc": "Connects authentication layer directly to RAM."
+        }
+      ],
+      "work_logs": [
+        "Served active token claims in 0.04ms (Cache Hit Rate: 99.4%)",
+        "Purged invalidated token session:usr_88291 upon security signal",
+        "Maintained 10,000 parallel connection descriptors"
+      ]
+    },
+    {
+      "id": "cache.redis_bridge:RedisMemoryBridge.invalidate_user",
+      "name": "invalidate_user",
+      "type": "method",
+      "file": "cache/redis_bridge.py",
+      "lobe": "frontal",
+      "signature": "def invalidate_user(self, user_id: str):",
+      "docstring": "Purges active cache entry upon logout or security breach.",
+      "surrogate": "def invalidate_user(self, user_id: str):\n    \"\"\"Purges active cache entry upon logout or security breach.\"\"\"",
+      "full_tokens": 41,
+      "surrogate_tokens": 27,
+      "community": 0,
+      "pagerank": 24.59,
+      "is_active": true,
+      "commit": "HEAD",
+      "degree": 3,
+      "x": 28.86,
+      "y": 15.52,
+      "z": 67.43,
+      "color": "#38bdf8",
+      "friendly_title": "\u26a1 Invalidate User",
+      "friendly_domain": "Synaptic Flash Recall",
+      "friendly_role": "Sub-Millisecond Memory Core",
+      "friendly_mission": "Caches active sessions in high-speed volatile storage, cutting DB load by 98%.",
+      "friendly_power": 99,
+      "friendly_vibe": "Ultra-Fast \u2022 Ephemeral",
+      "sub_items": [
+        {
+          "title": "Hot Key In-Memory Store",
+          "type": "RAM Buffer",
+          "status": "Optimal",
+          "icon": "\ud83d\udd25",
+          "desc": "Instantaneous dictionary lookup at memory speeds."
+        },
+        {
+          "title": "TTL Eviction Sweeper",
+          "type": "Garbage Collector",
+          "status": "Running",
+          "icon": "\u23f3",
+          "desc": "Auto-expires inactive user sessions."
+        },
+        {
+          "title": "Zero-Latency Bridge",
+          "type": "I/O Multiplexer",
+          "status": "Connected",
+          "icon": "\ud83d\udd0c",
+          "desc": "Connects authentication layer directly to RAM."
+        }
+      ],
+      "work_logs": [
+        "Served active token claims in 0.04ms (Cache Hit Rate: 99.4%)",
+        "Purged invalidated token session:usr_88291 upon security signal",
+        "Maintained 10,000 parallel connection descriptors"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "mod:db.connection_pool",
+      "target": "mod:models.user",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:db.connection_pool",
+      "target": "models.user:UserDTO",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:db.connection_pool",
+      "target": "db.connection_pool:DatabasePool",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "db.connection_pool:DatabasePool",
+      "target": "db.connection_pool:DatabasePool.__init__",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "db.connection_pool:DatabasePool",
+      "target": "db.connection_pool:DatabasePool.find_user_by_credentials",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "db.connection_pool:DatabasePool.find_user_by_credentials",
+      "target": "models.user:UserDTO",
+      "type": "calls",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "db.connection_pool:DatabasePool",
+      "target": "db.connection_pool:DatabasePool.get_user_by_id",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "db.connection_pool:DatabasePool.get_user_by_id",
+      "target": "models.user:UserDTO",
+      "type": "calls",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "db.connection_pool:DatabasePool",
+      "target": "db.connection_pool:DatabasePool.update_billing_status",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:models.user",
+      "target": "models.user:TokenPayload",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:models.user",
+      "target": "models.user:UserDTO",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:models.user",
+      "target": "models.user:PaymentRequest",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:payments.processor",
+      "target": "mod:models.user",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:payments.processor",
+      "target": "models.user:PaymentRequest",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:payments.processor",
+      "target": "mod:db.connection_pool",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:payments.processor",
+      "target": "db.connection_pool:DatabasePool",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:payments.processor",
+      "target": "mod:cache.redis_bridge",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:payments.processor",
+      "target": "cache.redis_bridge:RedisMemoryBridge",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:payments.processor",
+      "target": "payments.processor:PaymentProcessor",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "payments.processor:PaymentProcessor",
+      "target": "payments.processor:PaymentProcessor.__init__",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "payments.processor:PaymentProcessor",
+      "target": "payments.processor:PaymentProcessor.process_charge",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "payments.processor:PaymentProcessor.process_charge",
+      "target": "db.connection_pool:DatabasePool.update_billing_status",
+      "type": "calls",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "payments.processor:PaymentProcessor.process_charge",
+      "target": "cache.redis_bridge:RedisMemoryBridge.invalidate_user",
+      "type": "calls",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:auth.jwt_handler",
+      "target": "mod:models.user",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:auth.jwt_handler",
+      "target": "models.user:TokenPayload",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:auth.jwt_handler",
+      "target": "auth.jwt_handler:JWTManager",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "auth.jwt_handler:JWTManager",
+      "target": "auth.jwt_handler:JWTManager.__init__",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "auth.jwt_handler:JWTManager",
+      "target": "auth.jwt_handler:JWTManager.sign_token",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "auth.jwt_handler:JWTManager",
+      "target": "auth.jwt_handler:JWTManager.verify_token",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "auth.jwt_handler:JWTManager.verify_token",
+      "target": "models.user:TokenPayload",
+      "type": "calls",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:auth.auth_service",
+      "target": "mod:auth.jwt_handler",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:auth.auth_service",
+      "target": "auth.jwt_handler:JWTManager",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:auth.auth_service",
+      "target": "mod:cache.redis_bridge",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:auth.auth_service",
+      "target": "cache.redis_bridge:RedisMemoryBridge",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:auth.auth_service",
+      "target": "mod:db.connection_pool",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:auth.auth_service",
+      "target": "db.connection_pool:DatabasePool",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:auth.auth_service",
+      "target": "mod:models.user",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:auth.auth_service",
+      "target": "models.user:TokenPayload",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:auth.auth_service",
+      "target": "models.user:UserDTO",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:auth.auth_service",
+      "target": "auth.auth_service:AuthService",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "auth.auth_service:AuthService",
+      "target": "auth.auth_service:AuthService.__init__",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "auth.auth_service:AuthService",
+      "target": "auth.auth_service:AuthService.login",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "auth.auth_service:AuthService.login",
+      "target": "db.connection_pool:DatabasePool.find_user_by_credentials",
+      "type": "calls",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "auth.auth_service:AuthService.login",
+      "target": "models.user:TokenPayload",
+      "type": "calls",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "auth.auth_service:AuthService.login",
+      "target": "auth.jwt_handler:JWTManager.sign_token",
+      "type": "calls",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "auth.auth_service:AuthService.login",
+      "target": "cache.redis_bridge:RedisMemoryBridge.store_session",
+      "type": "calls",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "auth.auth_service:AuthService",
+      "target": "auth.auth_service:AuthService.authenticate_request",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "auth.auth_service:AuthService.authenticate_request",
+      "target": "auth.jwt_handler:JWTManager.verify_token",
+      "type": "calls",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "auth.auth_service:AuthService.authenticate_request",
+      "target": "cache.redis_bridge:RedisMemoryBridge.get_session",
+      "type": "calls",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "auth.auth_service:AuthService.authenticate_request",
+      "target": "db.connection_pool:DatabasePool.get_user_by_id",
+      "type": "calls",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:api.gateway_routes",
+      "target": "mod:auth.auth_service",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:api.gateway_routes",
+      "target": "auth.auth_service:AuthService",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:api.gateway_routes",
+      "target": "mod:payments.processor",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:api.gateway_routes",
+      "target": "payments.processor:PaymentProcessor",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:api.gateway_routes",
+      "target": "mod:models.user",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:api.gateway_routes",
+      "target": "models.user:PaymentRequest",
+      "type": "imports",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:api.gateway_routes",
+      "target": "api.gateway_routes:route_login",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "api.gateway_routes:route_login",
+      "target": "auth.auth_service:AuthService.login",
+      "type": "calls",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:api.gateway_routes",
+      "target": "api.gateway_routes:route_checkout",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "api.gateway_routes:route_checkout",
+      "target": "auth.auth_service:AuthService.authenticate_request",
+      "type": "calls",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "api.gateway_routes:route_checkout",
+      "target": "models.user:PaymentRequest",
+      "type": "calls",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "api.gateway_routes:route_checkout",
+      "target": "payments.processor:PaymentProcessor.process_charge",
+      "type": "calls",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:api.gateway_routes",
+      "target": "api.gateway_routes:route_profile",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "api.gateway_routes:route_profile",
+      "target": "auth.auth_service:AuthService.authenticate_request",
+      "type": "calls",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "mod:cache.redis_bridge",
+      "target": "cache.redis_bridge:RedisMemoryBridge",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "cache.redis_bridge:RedisMemoryBridge",
+      "target": "cache.redis_bridge:RedisMemoryBridge.__init__",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "cache.redis_bridge:RedisMemoryBridge",
+      "target": "cache.redis_bridge:RedisMemoryBridge.store_session",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "cache.redis_bridge:RedisMemoryBridge",
+      "target": "cache.redis_bridge:RedisMemoryBridge.get_session",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    },
+    {
+      "source": "cache.redis_bridge:RedisMemoryBridge",
+      "target": "cache.redis_bridge:RedisMemoryBridge.invalidate_user",
+      "type": "exposes",
+      "weight": 1.0,
+      "is_active": true,
+      "commit": "HEAD"
+    }
+  ],
+  "stats": {
+    "total_nodes": 34,
+    "total_edges": 69,
+    "active_nodes": 34,
+    "active_edges": 69,
+    "total_full_tokens": 3992,
+    "total_surrogate_tokens": 752,
+    "overall_token_compression": 5.3
+  }
+}

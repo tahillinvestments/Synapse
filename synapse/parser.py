@@ -5,7 +5,7 @@ Extracts functions, classes, calls, imports, routes, and builds lightweight surr
 
 import ast
 from typing import List, Tuple, Dict, Any, Optional
-from synapse_graph.models import SymbolNode, MemoryEdge, LobeType, EdgeType
+from synapse.models import SymbolNode, MemoryEdge, LobeType, EdgeType
 
 
 class CodebaseParser:

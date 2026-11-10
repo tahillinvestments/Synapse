@@ -8,7 +8,7 @@ Pure-Python zero-dependency implementation with optional NetworkX acceleration.
 """
 
 from typing import Dict, List, Set, Any
-from synapse_graph.models import SymbolNode, MemoryEdge
+from synapse.models import SymbolNode, MemoryEdge
 
 
 class HierarchicalCompressor:

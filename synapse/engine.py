@@ -8,11 +8,11 @@ import os
 import math
 import random
 import json
-from synapse_graph.models import SymbolNode, MemoryEdge, LobeType, EdgeType, RetrievalResult
-from synapse_graph.parser import CodebaseParser
-from synapse_graph.hippocampus import HippocampalEngine
-from synapse_graph.temporal import TemporalTracker
-from synapse_graph.hierarchical import HierarchicalCompressor
+from synapse.models import SymbolNode, MemoryEdge, LobeType, EdgeType, RetrievalResult
+from synapse.parser import CodebaseParser
+from synapse.hippocampus import HippocampalEngine
+from synapse.temporal import TemporalTracker
+from synapse.hierarchical import HierarchicalCompressor
 
 
 class SynapseMemoryEngine:
@@ -202,7 +202,7 @@ class SynapseMemoryEngine:
             # Degree count
             deg = sum(1 for e in self.edges if (e.source_id == nid or e.target_id == nid) and e.is_active)
 
-            brain_nodes.append({
+            node_dict = {
                 "id": node.id,
                 "name": node.name,
                 "type": node.symbol_type,
@@ -222,7 +222,14 @@ class SynapseMemoryEngine:
                 "y": round(base_y, 2),
                 "z": round(base_z, 2),
                 "color": color
-            })
+            }
+            try:
+                from synapse.personas import enrich_node_with_persona
+                node_dict = enrich_node_with_persona(node_dict)
+            except Exception:
+                pass
+
+            brain_nodes.append(node_dict)
 
         brain_edges = []
         for e in self.edges:

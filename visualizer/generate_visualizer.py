@@ -1,12 +1,13 @@
 """
-Builds the standalone brain_memory_visualizer.html artifact with embedded graph data and full 3D Canvas engine.
+Builds the upgraded Synapse 3D Brain Cortex Web Studio with friendly personas,
+sub-level work visualizer cards, animated neural orbital view, and deep-dive drawer.
 """
 
 import json
 import os
 
-def build_html():
-    json_path = "/home/antigravity/synapse_graph/brain_graph.json"
+def build_full_html():
+    json_path = "/home/antigravity/synapse/examples/enriched_brain_graph.json"
     with open(json_path, "r", encoding="utf-8") as f:
         graph_data = json.load(f)
 
@@ -17,7 +18,7 @@ def build_html():
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SynapseGraph // 3D Neural Code Memory Engine</title>
+  <title>Synapse // 3D Neural Cortex & Project Subsystems</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
     @keyframes pulse-glow {{
@@ -37,21 +38,19 @@ def build_html():
   <!-- TOP HUD HEADER -->
   <header class="h-14 border-b border-cyan-950/70 bg-slate-950/80 backdrop-blur-md px-4 flex items-center justify-between z-20 shrink-0">
     <div class="flex items-center gap-3">
-      <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-600 to-rose-500 flex items-center justify-center shadow-lg shadow-cyan-500/20">
-        <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-        </svg>
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-600 to-rose-500 flex items-center justify-center shadow-lg shadow-cyan-500/30">
+        <span class="text-lg">🧠</span>
       </div>
       <div>
         <div class="flex items-center gap-2">
-          <h1 class="text-sm font-bold tracking-wider uppercase text-cyan-400">SynapseGraph</h1>
-          <span class="text-[10px] px-1.5 py-0.5 rounded bg-cyan-950/80 text-cyan-300 border border-cyan-800/60 font-mono">v2.6 SOTA</span>
-          <span class="inline-flex items-center gap-1 text-[10px] text-emerald-400 font-mono">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-            NEURAL ACTIVE
+          <h1 class="text-sm font-extrabold tracking-wider uppercase text-cyan-400 font-mono">Synapse Brain</h1>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-cyan-950/90 text-cyan-300 border border-cyan-700/60 font-mono">v2.6 CORTEX</span>
+          <span class="inline-flex items-center gap-1.5 text-[10px] text-emerald-400 font-mono font-medium">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            NEURAL MESH ACTIVE
           </span>
         </div>
-        <p class="text-xs text-slate-400">HippoRAG 2 • Tree-Sitter Programmatic Parsing • Graphiti Temporal Invalidation</p>
+        <p class="text-xs text-slate-400">Click any memory node to dive into its sub-level systems & mission work</p>
       </div>
     </div>
 
@@ -59,33 +58,37 @@ def build_html():
     <div class="hidden md:flex items-center gap-6 font-mono text-xs">
       <div class="flex flex-col items-end">
         <span class="text-slate-400 text-[10px] uppercase">Memory Nodes</span>
-        <span class="text-cyan-300 font-semibold text-sm" id="stat-nodes">34 Active</span>
+        <span class="text-cyan-300 font-semibold text-sm" id="stat-nodes">34 Active Units</span>
       </div>
       <div class="h-6 w-px bg-slate-800"></div>
       <div class="flex flex-col items-end">
-        <span class="text-slate-400 text-[10px] uppercase">Synaptic Edges</span>
-        <span class="text-rose-400 font-semibold text-sm" id="stat-edges">102 Axons</span>
+        <span class="text-slate-400 text-[10px] uppercase">Synaptic Axons</span>
+        <span class="text-rose-400 font-semibold text-sm" id="stat-edges">102 Pathways</span>
       </div>
       <div class="h-6 w-px bg-slate-800"></div>
       <div class="flex flex-col items-end">
-        <span class="text-slate-400 text-[10px] uppercase">Token Efficiency</span>
-        <span class="text-emerald-400 font-semibold text-sm" id="stat-efficiency">82.4% Saved</span>
+        <span class="text-slate-400 text-[10px] uppercase">Context Saved</span>
+        <span class="text-emerald-400 font-semibold text-sm" id="stat-efficiency">82.4% Less Tokens</span>
       </div>
       <div class="h-6 w-px bg-slate-800"></div>
       <div class="flex flex-col items-end">
-        <span class="text-slate-400 text-[10px] uppercase">Associative Latency</span>
+        <span class="text-slate-400 text-[10px] uppercase">Associative Recall</span>
         <span class="text-amber-300 font-semibold text-sm">0.59 ms</span>
       </div>
     </div>
 
     <!-- Right Controls -->
     <div class="flex items-center gap-2">
-      <button id="btn-autorotate" class="px-2.5 py-1 text-xs rounded bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-cyan-300 flex items-center gap-1.5 transition">
+      <!-- Title Display Toggle: Fun/Friendly vs Technical AST -->
+      <button id="btn-toggle-titles" class="px-2.5 py-1 text-xs rounded-lg bg-slate-900 hover:bg-slate-800 border border-cyan-500/50 text-cyan-300 flex items-center gap-1.5 transition shadow">
+        <span>Labels: <strong id="title-mode-status" class="text-emerald-400">FUN / FRIENDLY</strong></span>
+      </button>
+      <button id="btn-autorotate" class="px-2.5 py-1 text-xs rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-slate-300 flex items-center gap-1.5 transition">
         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
         <span>Orbit: <strong id="orbit-status">ON</strong></span>
       </button>
-      <button id="btn-reset-cam" class="px-2.5 py-1 text-xs rounded bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-slate-300 transition">
-        Reset View
+      <button id="btn-reset-cam" class="px-2.5 py-1 text-xs rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-slate-300 transition">
+        Reset
       </button>
     </div>
   </header>
@@ -100,21 +103,21 @@ def build_html():
     <div class="absolute top-4 left-4 w-80 max-h-[calc(100vh-5rem)] flex flex-col gap-3 pointer-events-none z-10">
       
       <!-- Query / Retrieval Module -->
-      <div class="pointer-events-auto bg-slate-950/85 backdrop-blur-md border border-cyan-900/50 rounded-xl p-4 shadow-2xl shadow-cyan-950/40 flex flex-col gap-3">
+      <div class="pointer-events-auto bg-slate-950/85 backdrop-blur-md border border-cyan-900/50 rounded-2xl p-4 shadow-2xl shadow-cyan-950/40 flex flex-col gap-3">
         <div class="flex items-center justify-between border-b border-slate-800 pb-2">
           <div class="flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
-            <span class="text-xs font-semibold text-rose-300 tracking-wider uppercase font-mono">HippoRAG 2 Retrieval</span>
+            <span class="text-xs font-semibold text-rose-300 tracking-wider uppercase font-mono">HippoRAG 2 Associative Recall</span>
           </div>
-          <span class="text-[10px] text-slate-400 font-mono">PPR Subgraph</span>
+          <span class="text-[10px] text-slate-400 font-mono">Single-Step</span>
         </div>
 
         <div>
-          <label class="text-[11px] text-slate-400 block mb-1">Simulate Agent Context Query:</label>
+          <label class="text-[11px] text-slate-400 block mb-1">Simulate Agent Query:</label>
           <div class="relative">
             <input id="query-input" type="text" value="Refactor token verification & authentication" 
                    class="w-full text-xs bg-slate-900/90 border border-slate-700 rounded-lg px-2.5 py-1.5 text-cyan-200 placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-mono">
-            <button id="btn-run-query" class="absolute right-1 top-1 bottom-1 px-2 bg-gradient-to-r from-cyan-600 to-rose-600 hover:from-cyan-500 hover:to-rose-500 text-white rounded text-[10px] font-semibold tracking-wider uppercase transition flex items-center gap-1 shadow">
+            <button id="btn-run-query" class="absolute right-1 top-1 bottom-1 px-2.5 bg-gradient-to-r from-cyan-600 to-rose-600 hover:from-cyan-500 hover:to-rose-500 text-white rounded text-[10px] font-semibold tracking-wider uppercase transition flex items-center gap-1 shadow">
               <span>Fire</span>
               <svg class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </button>
@@ -123,7 +126,7 @@ def build_html():
 
         <!-- Quick Preset Queries -->
         <div class="flex flex-col gap-1.5">
-          <span class="text-[10px] text-slate-400 uppercase tracking-wide">Quick Neural Scenarios:</span>
+          <span class="text-[10px] text-slate-400 uppercase tracking-wide">Quick Brain Missions:</span>
           <div class="flex flex-wrap gap-1">
             <button class="preset-btn text-[10px] px-2 py-1 rounded bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 transition hover:border-cyan-500/50 text-left"
                     data-q="Refactor token verification & authentication">
@@ -141,9 +144,9 @@ def build_html():
         </div>
 
         <!-- Real-Time Token Telemetry Result -->
-        <div id="query-result-card" class="bg-cyan-950/40 border border-cyan-800/40 rounded-lg p-2.5 flex flex-col gap-1.5">
+        <div id="query-result-card" class="bg-cyan-950/40 border border-cyan-800/40 rounded-xl p-2.5 flex flex-col gap-1.5">
           <div class="flex items-center justify-between text-[11px]">
-            <span class="text-slate-300 font-medium">Single-Step Subgraph:</span>
+            <span class="text-slate-300 font-medium">Activated Subgraph:</span>
             <span id="qr-nodes-count" class="text-cyan-300 font-mono font-bold">8 nodes / 4 hops</span>
           </div>
           <div class="grid grid-cols-2 gap-2 text-[10px] font-mono">
@@ -152,7 +155,7 @@ def build_html():
               <span id="qr-raw-tok" class="text-rose-400 font-semibold text-xs">984 tokens</span>
             </div>
             <div class="bg-slate-900/80 rounded p-1.5 border border-slate-800">
-              <span class="text-slate-400 block">SynapseGraph:</span>
+              <span class="text-slate-400 block">Synapse Subgraph:</span>
               <span id="qr-surr-tok" class="text-emerald-400 font-semibold text-xs">213 tokens</span>
             </div>
           </div>
@@ -174,7 +177,7 @@ def build_html():
             </span>
             <span id="temporal-badge" class="text-[9px] px-1 rounded bg-slate-800 text-slate-400 font-mono">STABLE</span>
           </div>
-          <button id="btn-toggle-refactor" class="w-full py-1.5 px-2 rounded bg-amber-950/40 hover:bg-amber-900/50 border border-amber-800/50 text-amber-200 text-[11px] font-medium transition flex items-center justify-center gap-1.5">
+          <button id="btn-toggle-refactor" class="w-full py-1.5 px-2 rounded-lg bg-amber-950/40 hover:bg-amber-900/50 border border-amber-800/50 text-amber-200 text-[11px] font-medium transition flex items-center justify-center gap-1.5">
             <span id="refactor-btn-text">Simulate Code Refactor (Invalidate Edges)</span>
           </button>
         </div>
@@ -182,149 +185,173 @@ def build_html():
       </div>
 
       <!-- Functional Lobe Legend & Toggles -->
-      <div class="pointer-events-auto bg-slate-950/85 backdrop-blur-md border border-slate-800 rounded-xl p-3 shadow-xl flex flex-col gap-2">
+      <div class="pointer-events-auto bg-slate-950/85 backdrop-blur-md border border-slate-800 rounded-2xl p-3 shadow-xl flex flex-col gap-2">
         <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider font-mono">Brain Memory Lobes</span>
         
         <div class="grid grid-cols-1 gap-1 text-[11px]">
-          <label class="flex items-center justify-between p-1 rounded hover:bg-slate-900/60 cursor-pointer">
+          <div class="flex items-center justify-between p-1 rounded hover:bg-slate-900/60">
             <div class="flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-[#38bdf8] shadow shadow-cyan-400/50"></span>
               <span class="text-slate-200">Frontal Lobe</span>
             </div>
-            <span class="text-[10px] text-slate-400 font-mono">AST Logic & Control</span>
-          </label>
+            <span class="text-[10px] text-slate-400 font-mono">Executive Workflows</span>
+          </div>
 
-          <label class="flex items-center justify-between p-1 rounded hover:bg-slate-900/60 cursor-pointer">
+          <div class="flex items-center justify-between p-1 rounded hover:bg-slate-900/60">
             <div class="flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-[#f43f5e] shadow shadow-rose-400/50"></span>
               <span class="text-slate-200">Hippocampus</span>
             </div>
-            <span class="text-[10px] text-slate-400 font-mono">Associative PPR Index</span>
-          </label>
+            <span class="text-[10px] text-slate-400 font-mono">Associative Recall Hub</span>
+          </div>
 
-          <label class="flex items-center justify-between p-1 rounded hover:bg-slate-900/60 cursor-pointer">
+          <div class="flex items-center justify-between p-1 rounded hover:bg-slate-900/60">
             <div class="flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-[#eab308] shadow shadow-amber-400/50"></span>
               <span class="text-slate-200">Temporal Lobe</span>
             </div>
-            <span class="text-[10px] text-slate-400 font-mono">Commits & Evolution</span>
-          </label>
+            <span class="text-[10px] text-slate-400 font-mono">Commit Evolution</span>
+          </div>
 
-          <label class="flex items-center justify-between p-1 rounded hover:bg-slate-900/60 cursor-pointer">
+          <div class="flex items-center justify-between p-1 rounded hover:bg-slate-900/60">
             <div class="flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-[#a855f7] shadow shadow-purple-400/50"></span>
               <span class="text-slate-200">Parietal Lobe</span>
             </div>
-            <span class="text-[10px] text-slate-400 font-mono">Schemas & Contracts</span>
-          </label>
+            <span class="text-[10px] text-slate-400 font-mono">Contracts & Schemas</span>
+          </div>
 
-          <label class="flex items-center justify-between p-1 rounded hover:bg-slate-900/60 cursor-pointer">
+          <div class="flex items-center justify-between p-1 rounded hover:bg-slate-900/60">
             <div class="flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-[#10b981] shadow shadow-emerald-400/50"></span>
               <span class="text-slate-200">Occipital Lobe</span>
             </div>
-            <span class="text-[10px] text-slate-400 font-mono">API Sensory Ingress</span>
-          </label>
+            <span class="text-[10px] text-slate-400 font-mono">Public Sensory Gates</span>
+          </div>
         </div>
       </div>
 
     </div>
 
-    <!-- RIGHT SIDEBAR: Selected Node Inspector Drawer -->
-    <div id="inspector-panel" class="absolute top-4 right-4 w-84 max-h-[calc(100vh-5rem)] bg-slate-950/90 backdrop-blur-md border border-cyan-800/40 rounded-xl p-4 shadow-2xl shadow-cyan-950/50 flex flex-col gap-3 z-10 overflow-y-auto transition-all duration-300">
+    <!-- RIGHT SIDEBAR: ENRICHED NODE INSPECTOR & SUB-LEVEL WORK DRAWER -->
+    <div id="inspector-panel" class="absolute top-4 right-4 w-96 max-h-[calc(100vh-5rem)] bg-slate-950/92 backdrop-blur-xl border border-cyan-800/50 rounded-2xl p-4 shadow-2xl shadow-cyan-950/60 flex flex-col gap-3.5 z-10 overflow-y-auto transition-all duration-300">
       
-      <div class="flex items-center justify-between border-b border-slate-800 pb-2">
-        <div class="flex items-center gap-2">
-          <span id="inspect-lobe-pill" class="text-[10px] px-2 py-0.5 rounded font-mono font-semibold uppercase bg-cyan-950 text-cyan-300 border border-cyan-800">
-            FRONTAL
+      <!-- Persona Header Card -->
+      <div class="border-b border-slate-800/80 pb-3 flex flex-col gap-1.5">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-1.5">
+            <span id="inspect-lobe-pill" class="text-[10px] px-2 py-0.5 rounded font-mono font-semibold uppercase bg-cyan-950 text-cyan-300 border border-cyan-800">
+              FRONTAL
+            </span>
+            <span id="inspect-vibe" class="text-[10px] px-2 py-0.5 rounded-full font-mono bg-indigo-950 text-indigo-300 border border-indigo-800/60">
+              Vigilant • Shielded
+            </span>
+          </div>
+          <span id="inspect-active" class="text-[10px] font-mono text-emerald-400 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> ONLINE
           </span>
-          <span id="inspect-type" class="text-[10px] text-slate-400 font-mono uppercase">FUNCTION</span>
         </div>
-        <span id="inspect-active" class="text-[10px] font-mono text-emerald-400 flex items-center gap-1">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> ACTIVE
+
+        <div>
+          <h2 id="inspect-friendly-title" class="text-lg font-extrabold text-white tracking-wide">
+            🔐 Token Verifier
+          </h2>
+          <div class="flex items-center gap-2 text-xs">
+            <span id="inspect-role" class="text-cyan-400 font-semibold font-mono">Cryptographic Sentinel</span>
+            <span class="text-slate-600">•</span>
+            <span id="inspect-domain" class="text-slate-400 text-[11px]">Security & Cyber-Defense</span>
+          </div>
+          <span id="inspect-technical-name" class="text-[11px] text-slate-500 font-mono block mt-0.5">
+            auth.jwt_handler:JWTManager.verify_token
+          </span>
+        </div>
+
+        <!-- Mission Statement -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-300 mt-1">
+          <span class="text-[10px] text-slate-400 font-mono uppercase tracking-wider block mb-0.5">Project Role & Mission:</span>
+          <p id="inspect-mission" class="leading-relaxed">
+            Guards the perimeter, issues digital passports, and verifies cryptographic tokens.
+          </p>
+        </div>
+      </div>
+
+      <!-- SUB-LEVEL WORK ITEMS (The requested deep-dive visual!) -->
+      <div class="flex flex-col gap-2">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-bold text-white uppercase tracking-wider font-mono flex items-center gap-1.5">
+            <span>⚙️</span> Sub-Level Components (<span id="inspect-sub-count">3</span>)
+          </span>
+          <span class="text-[10px] text-cyan-400 font-mono">Active Work Units</span>
+        </div>
+
+        <div id="inspect-sub-items-container" class="flex flex-col gap-2">
+          <!-- Populated dynamically with rich sub-cards -->
+        </div>
+      </div>
+
+      <!-- Real-Time Activity Log for this node -->
+      <div class="bg-slate-900/70 border border-slate-800/90 rounded-xl p-2.5 flex flex-col gap-1.5">
+        <span class="text-[10px] text-slate-400 uppercase tracking-wider font-mono flex items-center gap-1">
+          <span>📡</span> Node Work Activity:
         </span>
+        <ul id="inspect-work-logs" class="text-[11px] font-mono text-slate-300 space-y-1 list-disc list-inside">
+          <!-- Populated dynamically -->
+        </ul>
       </div>
 
-      <!-- Node Header -->
-      <div>
-        <h2 id="inspect-title" class="text-base font-bold text-white font-mono break-all">verify_token</h2>
-        <span id="inspect-file" class="text-xs text-slate-400 font-mono block">auth/jwt_handler.py</span>
-      </div>
-
-      <!-- Code Signature -->
-      <div class="flex flex-col gap-1">
-        <span class="text-[10px] text-slate-400 uppercase tracking-wider font-mono">AST Signature:</span>
-        <pre id="inspect-sig" class="text-[11px] bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-cyan-300 font-mono overflow-x-auto whitespace-pre-wrap">def verify_token(self, raw_token: str) -> Optional[TokenPayload]:</pre>
-      </div>
-
-      <!-- Docstring / Semantic Intent -->
-      <div class="flex flex-col gap-1">
-        <span class="text-[10px] text-slate-400 uppercase tracking-wider font-mono">Docstring / Semantic Intent:</span>
-        <p id="inspect-doc" class="text-xs text-slate-300 bg-slate-900/60 p-2 rounded border border-slate-800/60 italic">
-          Validates token integrity and expiration timestamp.
-        </p>
-      </div>
-
-      <!-- Token Efficiency Card -->
-      <div class="bg-slate-900/90 border border-slate-800 rounded-lg p-2.5 flex flex-col gap-2">
-        <span class="text-[10px] text-slate-400 uppercase tracking-wider font-mono">Compression Telemetry</span>
-        <div class="grid grid-cols-2 gap-2 text-[10px] font-mono">
-          <div>
-            <span class="text-slate-500 block">Full Body Size:</span>
-            <span id="inspect-full-tok" class="text-rose-400 font-semibold text-xs">80 tokens</span>
-          </div>
-          <div>
-            <span class="text-slate-500 block">Surrogate Size:</span>
-            <span id="inspect-surr-tok" class="text-emerald-400 font-semibold text-xs">31 tokens</span>
+      <!-- Technical AST & Token Telemetry Accordion -->
+      <details class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-2.5 text-xs text-slate-400 cursor-pointer group">
+        <summary class="font-mono text-[11px] text-cyan-400 font-semibold select-none flex items-center justify-between">
+          <span>Inspect Raw AST & Token Signature</span>
+          <span class="text-slate-500 text-[10px] group-open:rotate-180 transition">&darr;</span>
+        </summary>
+        <div class="pt-2 flex flex-col gap-2">
+          <pre id="inspect-sig" class="text-[10px] bg-slate-950 border border-slate-800 rounded p-2 text-cyan-300 font-mono overflow-x-auto whitespace-pre-wrap">def verify_token(self, raw_token: str) -> Optional[TokenPayload]:</pre>
+          <div class="grid grid-cols-2 gap-2 text-[10px] font-mono">
+            <div>
+              <span class="text-slate-500 block">Full Tokens:</span>
+              <span id="inspect-full-tok" class="text-rose-400 font-semibold">80 tok</span>
+            </div>
+            <div>
+              <span class="text-slate-500 block">Surrogate Tokens:</span>
+              <span id="inspect-surr-tok" class="text-emerald-400 font-semibold">31 tok</span>
+            </div>
           </div>
         </div>
-        <div class="flex justify-between items-center text-[10px] font-mono border-t border-slate-800/80 pt-1.5">
-          <span class="text-slate-400">HippoRAG PPR Centrality:</span>
-          <span id="inspect-ppr" class="text-cyan-300 font-bold">28.63</span>
-        </div>
-      </div>
+      </details>
 
-      <!-- Synaptic Neighborhood Links -->
+      <!-- Synaptic Connections Links -->
       <div class="flex flex-col gap-1.5">
-        <span class="text-[10px] text-slate-400 uppercase tracking-wider font-mono">Synaptic Connections (<span id="inspect-deg">6</span>):</span>
-        <div id="inspect-neighbors" class="flex flex-col gap-1 max-h-36 overflow-y-auto pr-1">
+        <span class="text-[10px] text-slate-400 uppercase tracking-wider font-mono">Synaptic Neighborhood (<span id="inspect-deg">6</span>):</span>
+        <div id="inspect-neighbors" class="flex flex-col gap-1 max-h-32 overflow-y-auto pr-1">
           <!-- Populated dynamically -->
         </div>
       </div>
 
     </div>
 
-    <!-- BOTTOM FLOATING HUD: GitHub 2026 Breakthroughs Comparison -->
+    <!-- BOTTOM FLOATING HUD -->
     <div class="absolute bottom-4 left-1/2 -translate-x-1/2 max-w-2xl w-full px-4 pointer-events-none z-10">
-      <div class="pointer-events-auto bg-slate-950/85 backdrop-blur-md border border-slate-800/80 rounded-xl p-3 shadow-2xl flex items-center justify-between text-xs">
+      <div class="pointer-events-auto bg-slate-950/85 backdrop-blur-md border border-slate-800/80 rounded-2xl p-3 shadow-2xl flex items-center justify-between text-xs">
         <div class="flex items-center gap-3">
-          <div class="w-7 h-7 rounded-lg bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          <div class="w-8 h-8 rounded-xl bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400 text-sm">
+            💡
           </div>
           <div>
-            <div class="font-semibold text-slate-200">SOTA AI Memory Benchmark</div>
-            <div class="text-[11px] text-slate-400">10x Fewer Tokens vs File Reading • 1-Step Multi-Hop vs 10 IRCoT Passes</div>
+            <div class="font-semibold text-slate-200">Interactive Cortex Navigation</div>
+            <div class="text-[11px] text-slate-400">Click any memory sphere to dive into its sub-level machinery. Drag to orbit, scroll to zoom.</div>
           </div>
         </div>
-        <div class="flex items-center gap-4 text-[11px] font-mono">
-          <div class="text-right">
-            <span class="text-slate-400 block text-[9px] uppercase">Brute Force Grep</span>
-            <span class="text-rose-400">~28,400 tok</span>
-          </div>
-          <div class="text-right">
-            <span class="text-slate-400 block text-[9px] uppercase">Flat Vector RAG</span>
-            <span class="text-amber-400">~8,500 tok</span>
-          </div>
-          <div class="text-right bg-cyan-950/70 border border-cyan-700/60 px-2 py-1 rounded">
-            <span class="text-cyan-300 block text-[9px] uppercase font-bold">SynapseGraph</span>
-            <span class="text-emerald-300 font-bold">~1,240 tok</span>
-          </div>
+        <div class="flex items-center gap-3 font-mono text-[11px]">
+          <span class="text-cyan-300 bg-cyan-950/80 border border-cyan-700/60 px-2 py-1 rounded-lg">
+            3D Anatomical Sulci
+          </span>
         </div>
       </div>
     </div>
 
-    <!-- Cyberpunk Tooltip -->
-    <div id="tooltip" class="absolute hidden pointer-events-none z-30 bg-slate-900/95 border border-cyan-500/80 rounded-lg p-2 shadow-2xl text-xs backdrop-blur font-mono transition-opacity duration-150">
+    <!-- Tooltip -->
+    <div id="tooltip" class="absolute hidden pointer-events-none z-30 bg-slate-900/95 border border-cyan-500/80 rounded-xl p-2.5 shadow-2xl text-xs backdrop-blur font-mono transition-opacity duration-150">
       <div id="tt-title" class="font-bold text-cyan-300"></div>
       <div id="tt-sub" class="text-[10px] text-slate-400"></div>
     </div>
@@ -339,6 +366,7 @@ def build_html():
     let graphData = JSON.parse(JSON.stringify(INITIAL_GRAPH_DATA));
     let nodes = graphData.nodes;
     let edges = graphData.edges;
+    let useFriendlyTitles = true; // Fun language toggle!
 
     // Canvas & 3D Math Setup
     const canvas = document.getElementById("brainCanvas");
@@ -357,9 +385,9 @@ def build_html():
     resizeCanvas();
 
     // 3D Camera & Rotation
-    let camPitch = 0.25;  // X axis tilt
-    let camYaw = -0.6;    // Y axis rotation
-    let camDist = 320;    // Zoom distance
+    let camPitch = 0.25;
+    let camYaw = -0.6;
+    let camDist = 320;
     let targetDist = 320;
     let autoRotate = true;
     let isDragging = false;
@@ -374,29 +402,20 @@ def build_html():
     function initBrainEnvelope() {{
       brainParticles.length = 0;
       for (let i = 0; i < NUM_BRAIN_PARTICLES; i++) {{
-        // Generate hemisphere surface with sulci harmonics
         const u = Math.random() * Math.PI * 2;
         const v = (Math.random() - 0.5) * Math.PI * 0.95;
         const hemisphere = Math.random() > 0.5 ? 1 : -1;
 
-        // Base ellipsoid for human cerebrum
         let a = 82; // Width (X)
         let b = 65; // Height (Y)
         let c = 98; // Length (Z)
 
-        // Sulci & Gyri ripple formula
         const ripple = 1.0 + 0.08 * Math.sin(7 * u) * Math.cos(5 * v);
-        
         let x = (a * Math.cos(v) * Math.cos(u) * ripple) * 0.5 + hemisphere * 24;
         let y = b * Math.sin(v) * ripple + 12;
         let z = c * Math.cos(v) * Math.sin(u) * ripple;
 
-        // Medial longitudinal fissure indent
-        if (Math.abs(x) < 14) {{
-          y -= 8;
-        }}
-
-        // Cerebellum addition (lower posterior)
+        if (Math.abs(x) < 14) y -= 8;
         if (Math.random() < 0.15) {{
           x = (Math.random() - 0.5) * 60;
           y = -35 + (Math.random() - 0.5) * 18;
@@ -404,9 +423,7 @@ def build_html():
         }}
 
         brainParticles.push({{
-          x: x,
-          y: y,
-          z: z,
+          x: x, y: y, z: z,
           baseAlpha: 0.12 + Math.random() * 0.25,
           size: 1.0 + Math.random() * 1.5
         }});
@@ -414,7 +431,7 @@ def build_html():
     }}
     initBrainEnvelope();
 
-    // Synaptic Action Potentials (Action potential energy pulses traveling along axons)
+    // Synaptic Pulses
     const pulses = [];
     for (let i = 0; i < 40; i++) {{
       pulses.push({{
@@ -441,30 +458,24 @@ def build_html():
 
     // 3D Projection Math
     function project(x, y, z) {{
-      // Rotate around Y (Yaw)
       const cosY = Math.cos(camYaw);
       const sinY = Math.sin(camYaw);
       let x1 = x * cosY - z * sinY;
       let z1 = x * sinY + z * cosY;
 
-      // Rotate around X (Pitch)
       const cosP = Math.cos(camPitch);
       const sinP = Math.sin(camPitch);
       let y2 = y * cosP - z1 * sinP;
       let z2 = y * sinP + z1 * cosP;
 
-      // Camera distance offset
       const dist = z2 + camDist;
       if (dist <= 1) return null;
 
       const fov = 420;
       const scale = fov / dist;
-      const screenX = width / 2 + x1 * scale;
-      const screenY = height / 2 - y2 * scale;
-
       return {{
-        x: screenX,
-        y: screenY,
+        x: width / 2 + x1 * scale,
+        y: height / 2 - y2 * scale,
         z: z2,
         scale: scale,
         visible: dist > 10
@@ -477,26 +488,19 @@ def build_html():
       const dt = (now - lastTime) / 1000;
       lastTime = now;
 
-      // Smooth camera distance
       camDist += (targetDist - camDist) * 0.1;
-
-      // Auto rotation
       if (autoRotate && !isDragging) {{
         camYaw += 0.35 * dt;
       }}
 
-      // Expand query wave
       if (isQueryWaveActive) {{
         queryWaveRadius += 90 * dt;
-        if (queryWaveRadius > 240) {{
-          isQueryWaveActive = false;
-        }}
+        if (queryWaveRadius > 240) isQueryWaveActive = false;
       }}
 
-      // Clear Canvas
       ctx.clearRect(0, 0, width, height);
 
-      // Deep space ambient gradient
+      // Deep space gradient
       const bgGrad = ctx.createRadialGradient(width/2, height/2, 50, width/2, height/2, width*0.6);
       bgGrad.addColorStop(0, "rgba(14, 27, 49, 0.45)");
       bgGrad.addColorStop(1, "rgba(7, 11, 20, 0)");
@@ -516,9 +520,9 @@ def build_html():
         }}
       }});
 
-      // 2. Render Synaptic Axons (Edges)
+      // 2. Render Synaptic Axons
       ctx.lineWidth = 1.0;
-      edges.forEach((e, idx) => {{
+      edges.forEach((e) => {{
         const src = nodeMap[e.source];
         const tgt = nodeMap[e.target];
         if (!src || !tgt) return;
@@ -531,12 +535,11 @@ def build_html():
         const isHovered = hoveredNode && (hoveredNode.id === e.source || hoveredNode.id === e.target);
         const isSel = selectedNode && (selectedNode.id === e.source || selectedNode.id === e.target);
 
-        let alpha = 0.12;
         let strokeColor = "rgba(56, 189, 248, 0.15)";
         let lineWidth = 0.8;
 
         if (!e.is_active) {{
-          strokeColor = "rgba(239, 68, 68, 0.4)"; // Invalidated edge
+          strokeColor = "rgba(239, 68, 68, 0.4)";
           ctx.setLineDash([3, 3]);
         }} else if (isSub) {{
           strokeColor = "rgba(244, 63, 94, 0.75)";
@@ -559,7 +562,7 @@ def build_html():
       }});
       ctx.setLineDash([]);
 
-      // 3. Render Synaptic Pulses (Action Potentials)
+      // 3. Render Synaptic Pulses
       pulses.forEach(pulse => {{
         pulse.progress += pulse.speed;
         if (pulse.progress > 1) {{
@@ -579,7 +582,6 @@ def build_html():
 
         const curX = p1.x + (p2.x - p1.x) * pulse.progress;
         const curY = p1.y + (p2.y - p1.y) * pulse.progress;
-
         const isSub = activeSubgraphsNodeIds.has(edge.source) && activeSubgraphsNodeIds.has(edge.target);
 
         ctx.beginPath();
@@ -600,7 +602,6 @@ def build_html():
         }}
       }});
 
-      // Painter's algorithm sort from farthest to nearest
       projectedNodes.sort((a, b) => b.pt.z - a.pt.z);
 
       projectedNodes.forEach(({{ node: n, pt }}) => {{
@@ -609,14 +610,13 @@ def build_html():
         const isSeed = activeQuerySeedIds.includes(n.id);
         const isSub = activeSubgraphsNodeIds.has(n.id);
 
-        let baseRadius = (3.5 + Math.min(n.degree, 10) * 0.5 + (n.pagerank || 10) * 0.08) * pt.scale;
-        baseRadius = Math.max(3.0, Math.min(22.0, baseRadius));
+        let baseRadius = (4.0 + Math.min(n.degree, 10) * 0.5 + (n.pagerank || 10) * 0.08) * pt.scale;
+        baseRadius = Math.max(3.5, Math.min(22.0, baseRadius));
 
         if (isHovered || isSelected || isSeed) {{
           baseRadius *= 1.35;
         }}
 
-        // Opacity based on retrieval filter
         let alpha = 1.0;
         if (activeSubgraphsNodeIds.size > 0 && !isSub) {{
           alpha = 0.22;
@@ -646,7 +646,6 @@ def build_html():
           ctx.lineWidth = 2.5;
           ctx.stroke();
 
-          // Reticle ring
           ctx.beginPath();
           ctx.arc(pt.x, pt.y, baseRadius + 6, 0, Math.PI * 2);
           ctx.strokeStyle = "rgba(56, 189, 248, 0.7)";
@@ -656,21 +655,16 @@ def build_html():
           ctx.strokeStyle = "#f43f5e";
           ctx.lineWidth = 3.0;
           ctx.stroke();
-        }} else if (!n.is_active) {{
-          ctx.strokeStyle = "rgba(239, 68, 68, 0.9)";
-          ctx.lineWidth = 1.5;
-          ctx.setLineDash([2, 2]);
-          ctx.stroke();
-          ctx.setLineDash([]);
         }}
 
-        // Text Label for High-Centrality Hubs or Selected/Hovered
-        if (isSelected || isHovered || isSeed || (n.degree >= 7 && pt.scale > 0.8)) {{
-          ctx.font = `${{Math.max(10, Math.min(13, 11 * pt.scale))}}px monospace`;
+        // Display text label (uses Friendly Persona Title if toggle enabled!)
+        if (isSelected || isHovered || isSeed || (n.degree >= 6 && pt.scale > 0.8)) {{
+          const displayLabel = useFriendlyTitles ? (n.friendly_title || n.name) : n.name;
+          ctx.font = `${{Math.max(10, Math.min(13, 11 * pt.scale))}}px sans-serif`;
           ctx.fillStyle = isSelected ? "#ffffff" : (isSeed ? "#f43f5e" : "#e2e8f0");
           ctx.shadowColor = "rgba(0, 0, 0, 0.9)";
           ctx.shadowBlur = 4;
-          ctx.fillText(n.name, pt.x + baseRadius + 4, pt.y + 4);
+          ctx.fillText(displayLabel, pt.x + baseRadius + 5, pt.y + 4);
           ctx.shadowBlur = 0;
         }}
 
@@ -681,7 +675,7 @@ def build_html():
     }}
     requestAnimationFrame(render);
 
-    // Mouse Interaction: 3D Orbit & Zoom
+    // Mouse Interaction
     canvas.addEventListener("mousedown", e => {{
       isDragging = true;
       lastMouseX = e.clientX;
@@ -707,14 +701,13 @@ def build_html():
         autoRotate = false;
         document.getElementById("orbit-status").innerText = "OFF";
       }} else {{
-        // Hit test for nodes
         let found = null;
         for (let i = 0; i < nodes.length; i++) {{
           const n = nodes[i];
           const pt = project(n.x, n.y, n.z);
           if (pt && pt.visible) {{
             const dist = Math.hypot(mouseX - pt.x, mouseY - pt.y);
-            if (dist < 18) {{
+            if (dist < 20) {{
               found = n;
               break;
             }}
@@ -728,8 +721,8 @@ def build_html():
           tooltip.style.left = `${{e.clientX + 14}}px`;
           tooltip.style.top = `${{e.clientY + 14}}px`;
           tooltip.classList.remove("hidden");
-          document.getElementById("tt-title").innerText = `${{found.name}} [${{found.lobe.toUpperCase()}}]`;
-          document.getElementById("tt-sub").innerText = `${{found.symbol_type}} • ${{found.file}}`;
+          document.getElementById("tt-title").innerText = `${{found.friendly_title || found.name}}`;
+          document.getElementById("tt-sub").innerText = `${{found.friendly_role || found.symbol_type}} • ${{found.file}}`;
         }} else {{
           hoveredNode = null;
           canvas.style.cursor = isDragging ? "grabbing" : "grab";
@@ -743,35 +736,75 @@ def build_html():
       targetDist = Math.max(120, Math.min(750, targetDist + e.deltaY * 0.6));
     }}, {{ passive: false }});
 
-    canvas.addEventListener("click", e => {{
+    canvas.addEventListener("click", () => {{
       if (hoveredNode) {{
         selectNode(hoveredNode);
       }}
     }});
 
-    // Select Node and populate Inspector Panel
+    // POPULATE ENRICHED INSPECTOR PANEL WITH SUB-ITEMS
     function selectNode(n) {{
       selectedNode = n;
-      document.getElementById("inspect-title").innerText = n.name;
-      document.getElementById("inspect-file").innerText = n.file;
-      document.getElementById("inspect-type").innerText = n.type;
+
+      // Friendly persona headers
+      document.getElementById("inspect-friendly-title").innerText = n.friendly_title || n.name;
+      document.getElementById("inspect-role").innerText = n.friendly_role || n.type.toUpperCase();
+      document.getElementById("inspect-domain").innerText = n.friendly_domain || n.file;
+      document.getElementById("inspect-technical-name").innerText = n.id;
+      document.getElementById("inspect-mission").innerText = n.friendly_mission || n.docstring || "Executes application logic within project mesh.";
+      document.getElementById("inspect-vibe").innerText = n.friendly_vibe || "Active • Nominal";
       document.getElementById("inspect-lobe-pill").innerText = n.lobe.toUpperCase();
+
+      // Technical code signature & tokens
       document.getElementById("inspect-sig").innerText = n.signature;
-      document.getElementById("inspect-doc").innerText = n.docstring || "No docstring recorded";
       document.getElementById("inspect-full-tok").innerText = `${{n.full_tokens}} tokens`;
       document.getElementById("inspect-surr-tok").innerText = `${{n.surrogate_tokens}} tokens`;
-      document.getElementById("inspect-ppr").innerText = n.pagerank || "0.0";
-      
-      const act = document.getElementById("inspect-active");
-      if (n.is_active) {{
-        act.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> ACTIVE';
-        act.className = "text-[10px] font-mono text-emerald-400 flex items-center gap-1";
-      }} else {{
-        act.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span> INVALIDATED';
-        act.className = "text-[10px] font-mono text-rose-400 flex items-center gap-1";
-      }}
 
-      // Populate Neighbors
+      // Render Sub-Level Work Items (The deep visual breakdown!)
+      const subContainer = document.getElementById("inspect-sub-items-container");
+      subContainer.innerHTML = "";
+      const subItems = n.sub_items || [
+        {{ "title": "Execution Core", "type": "AST Unit", "status": "Ready", "icon": "⚙️", "desc": "Handles core function invocation." }},
+        {{ "title": "Interface Contract", "type": "Signature", "status": "Active", "icon": "📜", "desc": "Enforces typed parameters and return values." }},
+        {{ "title": "Axon Connector", "type": "Edge", "status": "Linked", "icon": "🔗", "desc": "Maintains call graph connection to peers." }}
+      ];
+      document.getElementById("inspect-sub-count").innerText = subItems.length;
+
+      subItems.forEach((sub, idx) => {{
+        const card = document.createElement("div");
+        card.className = "bg-slate-900/90 border border-slate-800 hover:border-cyan-500/50 rounded-xl p-2.5 flex flex-col gap-1 transition-all duration-200 shadow-sm";
+        card.innerHTML = `
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-base">${{sub.icon}}</span>
+              <span class="font-bold text-xs text-white">${{sub.title}}</span>
+            </div>
+            <span class="text-[9px] px-1.5 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-800/80 font-mono">${{sub.status}}</span>
+          </div>
+          <p class="text-[11px] text-slate-400 pl-6">${{sub.desc}}</p>
+          <div class="flex justify-between items-center text-[9px] text-slate-500 font-mono pl-6 pt-0.5">
+            <span>Sub-type: ${{sub.type}}</span>
+            <span class="text-emerald-400">● 100% HEALTH</span>
+          </div>
+        `;
+        subContainer.appendChild(card);
+      }});
+
+      // Render Node Work Logs
+      const logsContainer = document.getElementById("inspect-work-logs");
+      logsContainer.innerHTML = "";
+      const logs = n.work_logs || [
+        "Parsed via Zero-LLM AST programmatic pipeline",
+        "Assigned to biological brain lobe coordinates",
+        "Personalized PageRank diffusion ready"
+      ];
+      logs.forEach(log => {{
+        const li = document.createElement("li");
+        li.innerText = log;
+        logsContainer.appendChild(li);
+      }});
+
+      // Render Connected Neighbors
       const neighborsDiv = document.getElementById("inspect-neighbors");
       neighborsDiv.innerHTML = "";
       const connectedEdges = edges.filter(e => e.source === n.id || e.target === n.id);
@@ -782,11 +815,11 @@ def build_html():
         const other = nodeMap[otherId];
         if (other) {{
           const item = document.createElement("button");
-          item.className = "text-left text-[11px] p-1.5 rounded bg-slate-900/90 hover:bg-slate-800 border border-slate-800 flex items-center justify-between text-slate-300 font-mono transition";
+          item.className = "text-left text-[11px] p-1.5 rounded-lg bg-slate-900/90 hover:bg-slate-800 border border-slate-800 flex items-center justify-between text-slate-300 font-mono transition";
           item.innerHTML = `
             <div class="flex items-center gap-1.5 truncate">
               <span class="w-2 h-2 rounded-full" style="background:${{other.color}}"></span>
-              <span class="truncate">${{other.name}}</span>
+              <span class="truncate">${{other.friendly_title || other.name}}</span>
             </div>
             <span class="text-[9px] text-slate-500 uppercase">${{e.type}}</span>
           `;
@@ -795,19 +828,27 @@ def build_html():
         }}
       }});
     }}
+
     if (selectedNode) selectNode(selectedNode);
 
-    // In-Browser HippoRAG Personalized PageRank Implementation
+    // Toggle Fun/Friendly vs Technical Titles
+    document.getElementById("btn-toggle-titles").addEventListener("click", () => {{
+      useFriendlyTitles = !useFriendlyTitles;
+      const status = document.getElementById("title-mode-status");
+      status.innerText = useFriendlyTitles ? "FUN / FRIENDLY" : "TECHNICAL AST";
+      status.className = useFriendlyTitles ? "text-emerald-400" : "text-cyan-400";
+    }});
+
+    // HippoRAG Query Launcher
     function runHippoRAG(query) {{
       const qLower = query.toLowerCase();
       const qTokens = qLower.split(/\\s+|_|\\./).filter(t => t.length > 2);
 
-      // 1. Identify seed nodes
       const seedScores = [];
       nodes.forEach(n => {{
         if (!n.is_active) return;
         let score = 0;
-        const nameLower = n.name.toLowerCase();
+        const nameLower = (n.friendly_title + " " + n.name).toLowerCase();
         if (nameLower.includes(qLower) || qLower.includes(nameLower)) score += 5.0;
         qTokens.forEach(tok => {{
           if (nameLower.includes(tok)) score += 2.0;
@@ -821,13 +862,11 @@ def build_html():
 
       seedScores.sort((a, b) => b.score - a.score);
       const seeds = seedScores.slice(0, 3).map(s => s.node);
-      if (seeds.length === 0 && nodes.length > 0) {{
-        seeds.push(nodes[0]);
-      }}
+      if (seeds.length === 0 && nodes.length > 0) seeds.push(nodes[0]);
 
       activeQuerySeedIds = seeds.map(s => s.id);
 
-      // 2. Personalized PageRank (30 iterations)
+      // Personalized PageRank (30 iterations)
       const N = nodes.length;
       const alpha = 0.85;
       let p = new Array(N).fill(1 / N);
@@ -838,7 +877,6 @@ def build_html():
         teleport[idx] = 1.0 / seedIndices.length;
       }});
 
-      // Adjacency
       const outDegrees = new Array(N).fill(0);
       const adj = Array.from({{ length: N }}, () => []);
       edges.forEach(e => {{
@@ -848,7 +886,7 @@ def build_html():
         if (u !== -1 && v !== -1) {{
           adj[u].push(v);
           outDegrees[u]++;
-          adj[v].push(u); // Bidirectional associative flow
+          adj[v].push(u);
           outDegrees[v]++;
         }}
       }});
@@ -866,7 +904,6 @@ def build_html():
         p = nextP;
       }}
 
-      // Top ranked subgraph
       const ranked = nodes.map((n, i) => ({{ node: n, score: p[i] }}));
       ranked.sort((a, b) => b.score - a.score);
 
@@ -874,11 +911,9 @@ def build_html():
       activeSubgraphsNodeIds = new Set(topNodes.map(n => n.id));
       activeQuerySeedIds.forEach(id => activeSubgraphsNodeIds.add(id));
 
-      // Trigger visual wave
       isQueryWaveActive = true;
       queryWaveRadius = 0;
 
-      // Update Telemetry Card
       const fullTokens = topNodes.reduce((acc, n) => acc + (n.full_tokens || 80), 0);
       const surrTokens = topNodes.reduce((acc, n) => acc + (n.surrogate_tokens || 20), 0);
       const savings = Math.round((1 - surrTokens / Math.max(1, fullTokens)) * 100);
@@ -889,13 +924,9 @@ def build_html():
       document.getElementById("qr-savings-bar").style.width = `${{savings}}%`;
       document.getElementById("qr-savings-pct").innerText = `+${{savings}}% Tokens Saved`;
 
-      // Select top seed
-      if (seeds.length > 0) {{
-        selectNode(seeds[0]);
-      }}
+      if (seeds.length > 0) selectNode(seeds[0]);
     }}
 
-    // Event Listeners for Query HUD
     document.getElementById("btn-run-query").addEventListener("click", () => {{
       const q = document.getElementById("query-input").value;
       runHippoRAG(q);
@@ -907,83 +938,6 @@ def build_html():
         document.getElementById("query-input").value = q;
         runHippoRAG(q);
       }});
-    }});
-
-    // Temporal Refactor Simulation
-    let isRefactored = false;
-    document.getElementById("btn-toggle-refactor").addEventListener("click", () => {{
-      isRefactored = !isRefactored;
-      const btn = document.getElementById("btn-toggle-refactor");
-      const badge = document.getElementById("temporal-badge");
-      const btnText = document.getElementById("refactor-btn-text");
-
-      const targetNode = nodes.find(n => n.id === "auth.jwt_handler:JWTManager.verify_token");
-      
-      if (isRefactored) {{
-        badge.innerText = "COMMIT v2.0-ASYNC";
-        badge.className = "text-[9px] px-1 rounded bg-amber-950 text-amber-300 font-mono border border-amber-800";
-        btnText.innerText = "Revert to Previous Commit";
-
-        // Invalidate old node
-        if (targetNode) {{
-          targetNode.is_active = false;
-          targetNode.lobe = "temporal";
-          targetNode.color = "#ef4444";
-        }}
-        // Invalidate connected edges
-        edges.forEach(e => {{
-          if (e.source.includes("verify_token") || e.target.includes("verify_token")) {{
-            e.is_active = false;
-          }}
-        }});
-
-        // Add evolved async node
-        const evolvedNode = {{
-          id: "auth.jwt_handler:JWTManager.verify_token_async",
-          name: "verify_token_async",
-          type: "method",
-          file: "auth/jwt_handler.py",
-          lobe: "frontal",
-          signature: "async def verify_token_async(self, raw_token: str) -> Optional[TokenPayload]:",
-          docstring: "Asynchronous non-blocking JWT claims validation and crypto check.",
-          surrogate: "async def verify_token_async(self, raw_token: str) -> Optional[TokenPayload]: ...",
-          full_tokens: 95,
-          surrogate_tokens: 28,
-          community: 1,
-          pagerank: 34.2,
-          is_active: true,
-          commit: "v2.0-async",
-          degree: 5,
-          x: targetNode ? targetNode.x + 8 : 10,
-          y: targetNode ? targetNode.y + 6 : 25,
-          z: targetNode ? targetNode.z + 10 : 60,
-          color: "#10b981"
-        }};
-        
-        nodes.push(evolvedNode);
-        edges.push({{
-          source: evolvedNode.id,
-          target: "auth.jwt_handler:JWTManager.verify_token",
-          type: "evolved_from",
-          weight: 1.0,
-          is_active: true,
-          commit: "v2.0-async"
-        }});
-        updateNodeMap();
-        selectNode(evolvedNode);
-      }} else {{
-        badge.innerText = "STABLE";
-        badge.className = "text-[9px] px-1 rounded bg-slate-800 text-slate-400 font-mono";
-        btnText.innerText = "Simulate Code Refactor (Invalidate Edges)";
-
-        // Restore
-        graphData = JSON.parse(JSON.stringify(INITIAL_GRAPH_DATA));
-        nodes = graphData.nodes;
-        edges = graphData.edges;
-        updateNodeMap();
-        const restored = nodes.find(n => n.id === "auth.jwt_handler:JWTManager.verify_token");
-        if (restored) selectNode(restored);
-      }}
     }});
 
     // Auto rotate toggle
@@ -999,7 +953,6 @@ def build_html():
       targetDist = 320;
     }});
 
-    // Run initial query simulation on boot
     setTimeout(() => {{
       runHippoRAG("Refactor token verification & authentication");
     }}, 400);
@@ -1008,10 +961,16 @@ def build_html():
 </body>
 </html>
 '''
-    target_path = "/home/antigravity/.gemini/jetski/brain/v1/default/jetski_remote_agents_3p/6086e0b3-3e8c-4628-ad3f-93f16cd0d5e9/brain_memory_visualizer.html"
+    target_path = "/home/antigravity/synapse/visualizer/index.html"
     with open(target_path, "w", encoding="utf-8") as f:
         f.write(html_content)
-    print(f"Built visualizer artifact at {target_path} ({len(html_content)} bytes)")
+    print(f"Built visualizer at {target_path} ({len(html_content)} bytes)")
+
+    # Also sync to artifact directory so user can open directly in IDE
+    artifact_path = "/home/antigravity/.gemini/jetski/brain/v1/default/jetski_remote_agents_3p/6086e0b3-3e8c-4628-ad3f-93f16cd0d5e9/brain_memory_visualizer.html"
+    with open(artifact_path, "w", encoding="utf-8") as f:
+        f.write(html_content)
+    print(f"Synced to artifact path {artifact_path}")
 
 if __name__ == "__main__":
-    build_html()
+    build_full_html()
