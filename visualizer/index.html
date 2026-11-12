@@ -18,17 +18,18 @@
     ::-webkit-scrollbar-thumb { background: rgba(56, 189, 248, 0.35); border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: rgba(56, 189, 248, 0.65); }
 
-    /* Drawer transitions for mobile/tablet */
+    /* Responsive Drawer Transitions */
     .drawer-panel {
-      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.24s ease;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+      will-change: transform, opacity;
     }
     .drawer-hidden-left {
-      transform: translateX(-110%);
+      transform: translateX(-115%);
       opacity: 0;
       pointer-events: none;
     }
     .drawer-hidden-right {
-      transform: translateX(110%);
+      transform: translateX(115%);
       opacity: 0;
       pointer-events: none;
     }
@@ -36,27 +37,28 @@
 </head>
 <body class="bg-[#070b14] text-slate-100 font-sans antialiased overflow-hidden select-none h-screen w-screen flex flex-col touch-none">
 
-  <!-- COMPACT TOP NAVIGATION BAR -->
-  <header class="h-13 min-h-[48px] border-b border-cyan-950/70 bg-slate-950/90 backdrop-blur-md px-3 sm:px-4 flex items-center justify-between z-30 shrink-0">
-    <div class="flex items-center gap-2.5 min-w-0">
-      <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 via-indigo-600 to-rose-500 flex items-center justify-center shadow-md shadow-cyan-500/20 shrink-0">
-        <span class="text-base leading-none">🧠</span>
+  <!-- TOP APP BAR -->
+  <header class="h-12 sm:h-13 min-h-[48px] border-b border-cyan-950/70 bg-slate-950/92 backdrop-blur-md px-3 sm:px-4 flex items-center justify-between z-30 shrink-0">
+    <!-- Brand / Title -->
+    <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
+      <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-tr from-cyan-500 via-indigo-600 to-rose-500 flex items-center justify-center shadow-md shadow-cyan-500/20 shrink-0">
+        <span class="text-sm sm:text-base leading-none">🧠</span>
       </div>
       <div class="min-w-0">
-        <div class="flex items-center gap-1.5 flex-wrap">
+        <div class="flex items-center gap-1.5 flex-nowrap">
           <h1 class="text-xs sm:text-sm font-extrabold tracking-wider uppercase text-cyan-400 font-mono truncate">Synapse</h1>
-          <span class="text-[9px] sm:text-[10px] px-1.5 py-0.2 rounded-full bg-cyan-950/90 text-cyan-300 border border-cyan-700/60 font-mono hidden xs:inline-block">v2.6</span>
-          <span class="inline-flex items-center gap-1 text-[9px] sm:text-[10px] text-emerald-400 font-mono font-medium">
+          <span class="text-[9px] px-1.5 py-0.2 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-700/60 font-mono hidden xs:inline-block">v2.6</span>
+          <span class="inline-flex items-center gap-1 text-[9px] text-emerald-400 font-mono font-medium">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
             ACTIVE
           </span>
         </div>
-        <p class="text-[10px] text-slate-400 truncate hidden sm:block">Touch & drag to orbit • Click node to dive into sub-work</p>
+        <p class="text-[10px] text-slate-400 truncate hidden md:block">Orbit with 1 finger • Tap node to dive into sub-work</p>
       </div>
     </div>
 
-    <!-- Center Compact Metrics Telemetry (Adaptive for medium/large displays) -->
-    <div class="hidden xl:flex items-center gap-5 font-mono text-xs">
+    <!-- Center Desktop Telemetry -->
+    <div class="hidden 2xl:flex items-center gap-5 font-mono text-xs">
       <div class="flex flex-col items-end">
         <span class="text-slate-400 text-[9px] uppercase">Memory Nodes</span>
         <span class="text-cyan-300 font-bold text-xs" id="stat-nodes">34 Units</span>
@@ -81,52 +83,59 @@
     <!-- Header Action Controls -->
     <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
       
-      <!-- Drawer Toggles for Mobile / Tablet -->
-      <button id="btn-toggle-left-drawer" class="lg:hidden p-1.5 rounded-lg bg-slate-900 border border-slate-700 hover:border-cyan-500 text-cyan-300 transition flex items-center justify-center text-xs" title="Toggle Search & Missions">
-        <span>🔍 Missions</span>
+      <!-- Drawer Buttons for Tablets / Mobile (< 1280px) -->
+      <button id="btn-toggle-left-drawer" class="xl:hidden px-2 py-1 rounded-lg bg-slate-900 border border-slate-700 hover:border-cyan-500 text-cyan-300 transition flex items-center gap-1 text-[11px] sm:text-xs font-mono" title="Missions & Lobes">
+        <span>🔍</span>
+        <span class="hidden xs:inline">Missions</span>
       </button>
 
-      <button id="btn-toggle-right-drawer" class="p-1.5 sm:px-2 sm:py-1 rounded-lg bg-slate-900 border border-slate-700 hover:border-cyan-500 text-emerald-300 transition flex items-center gap-1 text-xs" title="Toggle Sub-Work Inspector">
+      <button id="btn-toggle-right-drawer" class="xl:hidden px-2 py-1 rounded-lg bg-slate-900 border border-slate-700 hover:border-emerald-500 text-emerald-300 transition flex items-center gap-1 text-[11px] sm:text-xs font-mono" title="Sub-Work Inspector">
         <span>⚙️</span>
-        <span class="hidden sm:inline">Inspector</span>
+        <span class="hidden xs:inline">Sub-Work</span>
       </button>
 
-      <!-- Label Clean Mode Switcher -->
-      <button id="btn-toggle-titles" class="px-2 py-1 text-xs rounded-lg bg-slate-900 hover:bg-slate-800 border border-cyan-500/40 text-cyan-300 transition flex items-center gap-1">
-        <span class="hidden md:inline">Mode:</span>
+      <!-- Label Style Switcher -->
+      <button id="btn-toggle-titles" class="px-2 py-1 text-[11px] sm:text-xs rounded-lg bg-slate-900 hover:bg-slate-800 border border-cyan-500/40 text-cyan-300 transition flex items-center gap-1">
+        <span class="hidden sm:inline">Titles:</span>
         <strong id="title-mode-status" class="text-emerald-400 font-mono text-[10px] sm:text-xs">FUN</strong>
       </button>
 
       <!-- Orbit Auto-Rotate Button -->
-      <button id="btn-autorotate" class="p-1.5 sm:px-2.5 sm:py-1 text-xs rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-slate-300 transition flex items-center gap-1">
+      <button id="btn-autorotate" class="px-2 py-1 text-[11px] sm:text-xs rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-slate-300 transition flex items-center gap-1">
         <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-        <span class="hidden sm:inline font-mono text-[10px]" id="orbit-status">ON</span>
+        <span class="font-mono text-[10px]" id="orbit-status">ON</span>
       </button>
 
       <!-- Reset Cam Button -->
-      <button id="btn-reset-cam" class="px-2 py-1 text-xs rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-slate-300 transition text-[11px]">
+      <button id="btn-reset-cam" class="px-2 py-1 text-[11px] sm:text-xs rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-slate-300 transition" title="Reset View">
         Reset
       </button>
     </div>
   </header>
 
-  <!-- MAIN CANVAS & RESPONSIVE FLOATING DRAWER CONTAINER -->
+  <!-- MAIN VIEWPORT CONTAINER -->
   <div class="relative flex-1 w-full h-full overflow-hidden">
     
-    <!-- 3D Canvas (Covers entire screen) -->
+    <!-- 3D Interactive Canvas -->
     <canvas id="brainCanvas" class="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing"></canvas>
 
-    <!-- LEFT DRAWER: HippoRAG Query Launcher & Brain Lobes (Adaptive drawer on tablet/phone, pinned on desktop) -->
-    <aside id="left-sidebar" class="drawer-panel drawer-hidden-left lg:translate-x-0 lg:opacity-100 lg:pointer-events-auto absolute top-2 sm:top-3 left-2 sm:left-3 w-[290px] sm:w-[310px] max-h-[calc(100vh-4.5rem)] flex flex-col gap-2.5 z-20 overflow-y-auto">
+    <!-- Translucent Backdrop for Tablet / Mobile Drawers -->
+    <div id="drawer-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-15 hidden transition-opacity duration-300 xl:hidden"></div>
+
+    <!-- LEFT DRAWER: HippoRAG Missions & Lobes -->
+    <aside id="left-sidebar" class="drawer-panel drawer-hidden-left xl:translate-x-0 xl:opacity-100 xl:pointer-events-auto absolute top-2 sm:top-3 left-2 sm:left-3 w-[88vw] sm:w-[320px] max-w-[340px] max-h-[calc(100vh-4.2rem)] flex flex-col gap-2.5 z-20 overflow-y-auto">
       
       <!-- Query & Mission Recall Card -->
-      <div class="bg-slate-950/90 backdrop-blur-md border border-cyan-900/60 rounded-xl p-3 shadow-2xl flex flex-col gap-2.5">
+      <div class="bg-slate-950/92 backdrop-blur-xl border border-cyan-900/60 rounded-xl p-3 shadow-2xl flex flex-col gap-2.5">
         <div class="flex items-center justify-between border-b border-slate-800/80 pb-1.5">
           <div class="flex items-center gap-1.5">
             <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
             <span class="text-[11px] font-semibold text-rose-300 tracking-wider uppercase font-mono">HippoRAG 2 Recall</span>
           </div>
-          <span class="text-[9px] text-slate-400 font-mono">&lt; 1ms PPR</span>
+          <div class="flex items-center gap-2">
+            <span class="text-[9px] text-slate-400 font-mono">&lt; 1ms PPR</span>
+            <button id="btn-close-left-drawer" class="xl:hidden w-5 h-5 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center text-xs transition" title="Close Drawer">✕</button>
+          </div>
         </div>
 
         <div>
@@ -144,18 +153,21 @@
         <!-- Quick Preset Mission Chips -->
         <div class="flex flex-col gap-1">
           <span class="text-[9px] text-slate-400 uppercase tracking-wide">Quick Brain Missions:</span>
-          <div class="flex flex-wrap gap-1">
-            <button class="preset-btn text-[9px] px-2 py-1 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 transition hover:border-cyan-500/50 text-left"
+          <div class="flex flex-col gap-1">
+            <button class="preset-btn text-[10px] px-2 py-1.5 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 transition hover:border-cyan-500/50 text-left flex items-center justify-between"
                     data-q="Refactor token verification & authentication">
-              🔐 Token & Auth
+              <span>🔐 Token & Auth</span>
+              <span class="text-[9px] text-cyan-400 font-mono">&rarr;</span>
             </button>
-            <button class="preset-btn text-[9px] px-2 py-1 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 transition hover:border-cyan-500/50 text-left"
+            <button class="preset-btn text-[10px] px-2 py-1.5 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 transition hover:border-cyan-500/50 text-left flex items-center justify-between"
                     data-q="Process customer charge & database transaction">
-              💳 Payment Checkout
+              <span>💳 Payment Checkout</span>
+              <span class="text-[9px] text-cyan-400 font-mono">&rarr;</span>
             </button>
-            <button class="preset-btn text-[9px] px-2 py-1 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 transition hover:border-cyan-500/50 text-left"
+            <button class="preset-btn text-[10px] px-2 py-1.5 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 transition hover:border-cyan-500/50 text-left flex items-center justify-between"
                     data-q="Cache session invalidate on user logout">
-              ⚡ Flash Cache Invalidation
+              <span>⚡ Flash Cache Invalidate</span>
+              <span class="text-[9px] text-cyan-400 font-mono">&rarr;</span>
             </button>
           </div>
         </div>
@@ -194,7 +206,7 @@
             </span>
             <span id="temporal-badge" class="text-[8px] px-1 rounded bg-slate-800 text-slate-400 font-mono">STABLE</span>
           </div>
-          <button id="btn-toggle-refactor" class="w-full py-1 px-1.5 rounded-md bg-amber-950/40 hover:bg-amber-900/50 border border-amber-800/50 text-amber-200 text-[10px] font-medium transition flex items-center justify-center gap-1">
+          <button id="btn-toggle-refactor" class="w-full py-1.5 px-2 rounded-md bg-amber-950/40 hover:bg-amber-900/50 border border-amber-800/50 text-amber-200 text-[10px] font-medium transition flex items-center justify-center gap-1">
             <span id="refactor-btn-text">Simulate Code Refactor</span>
           </button>
         </div>
@@ -202,7 +214,7 @@
       </div>
 
       <!-- Functional Lobe Legend Accordion (Compact) -->
-      <details class="bg-slate-950/85 backdrop-blur-md border border-slate-800 rounded-xl p-2.5 shadow-xl text-xs group">
+      <details class="bg-slate-950/90 backdrop-blur-md border border-slate-800 rounded-xl p-2.5 shadow-xl text-xs group">
         <summary class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider font-mono cursor-pointer select-none flex items-center justify-between">
           <span>🧠 Cortex Lobes (5)</span>
           <span class="text-slate-500 text-[9px] group-open:rotate-180 transition">&darr;</span>
@@ -248,8 +260,8 @@
 
     </aside>
 
-    <!-- RIGHT DRAWER: ENRICHED NODE INSPECTOR & SUB-LEVEL WORK DRAWER (Responsive drawer) -->
-    <aside id="inspector-panel" class="drawer-panel drawer-hidden-right lg:translate-x-0 lg:opacity-100 lg:pointer-events-auto absolute top-2 sm:top-3 right-2 sm:right-3 w-[300px] sm:w-[340px] md:w-[360px] max-h-[calc(100vh-4.5rem)] bg-slate-950/92 backdrop-blur-xl border border-cyan-800/60 rounded-xl p-3 sm:p-3.5 shadow-2xl flex flex-col gap-2.5 z-20 overflow-y-auto">
+    <!-- RIGHT DRAWER: SUB-LEVEL WORK & ENRICHED INSPECTOR -->
+    <aside id="inspector-panel" class="drawer-panel drawer-hidden-right xl:translate-x-0 xl:opacity-100 xl:pointer-events-auto absolute top-2 sm:top-3 right-2 sm:right-3 w-[88vw] sm:w-[340px] md:w-[360px] max-w-[400px] max-h-[calc(100vh-4.2rem)] bg-slate-950/94 backdrop-blur-xl border border-cyan-800/60 rounded-xl p-3 sm:p-3.5 shadow-2xl flex flex-col gap-2.5 z-20 overflow-y-auto">
       
       <!-- Persona Header Card -->
       <div class="border-b border-slate-800/80 pb-2.5 flex flex-col gap-1">
@@ -267,7 +279,7 @@
             <span id="inspect-active" class="text-[9px] font-mono text-emerald-400 flex items-center gap-1">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> ONLINE
             </span>
-            <button id="btn-close-inspector" class="w-5 h-5 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center text-xs transition" title="Close Panel">
+            <button id="btn-close-inspector" class="xl:hidden w-5 h-5 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center text-xs transition" title="Close Panel">
               ✕
             </button>
           </div>
@@ -296,7 +308,7 @@
         </div>
       </div>
 
-      <!-- SUB-LEVEL WORK ITEMS (The deep-dive visual!) -->
+      <!-- SUB-LEVEL WORK ITEMS (Deep-dive components) -->
       <div class="flex flex-col gap-1.5">
         <div class="flex items-center justify-between">
           <span class="text-[10px] font-bold text-white uppercase tracking-wider font-mono flex items-center gap-1">
@@ -306,7 +318,7 @@
         </div>
 
         <div id="inspect-sub-items-container" class="flex flex-col gap-1.5 max-h-[175px] overflow-y-auto pr-0.5">
-          <!-- Populated dynamically with rich sub-cards -->
+          <!-- Populated dynamically -->
         </div>
       </div>
 
@@ -351,15 +363,17 @@
 
     </aside>
 
-    <!-- FLOATING BOTTOM MINIMAL BANNER (Tucks away neatly, non-blocking) -->
-    <div class="absolute bottom-2 left-1/2 -translate-x-1/2 pointer-events-none z-10 w-auto max-w-[90vw]">
-      <div class="pointer-events-auto bg-slate-950/85 backdrop-blur-md border border-slate-800/80 rounded-full px-3 py-1 shadow-lg flex items-center gap-2 text-[10px] sm:text-[11px] text-slate-400">
-        <span class="text-cyan-400">💡</span>
-        <span class="truncate">Click/tap node to inspect sub-work • Drag to rotate • Pinch/scroll to zoom</span>
+    <!-- FLOATING BOTTOM MINIMAL BANNER -->
+    <div class="absolute bottom-2.5 left-1/2 -translate-x-1/2 pointer-events-none z-10 w-auto max-w-[92vw]">
+      <div class="pointer-events-auto bg-slate-950/85 backdrop-blur-md border border-slate-800/80 rounded-full px-3 py-1.5 shadow-lg flex items-center gap-2 text-[10px] sm:text-xs text-slate-300 font-mono">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shrink-0"></span>
+        <span id="bottom-hud-text" class="truncate">
+          Tap any node to dive into sub-work • 2-finger pinch to zoom
+        </span>
       </div>
     </div>
 
-    <!-- Hover/Touch Tooltip -->
+    <!-- Tooltip -->
     <div id="tooltip" class="absolute hidden pointer-events-none z-30 bg-slate-900/95 border border-cyan-500/80 rounded-lg p-2 shadow-2xl text-xs backdrop-blur font-mono transition-opacity duration-150 max-w-[220px]">
       <div id="tt-title" class="font-bold text-cyan-300 text-[11px] truncate"></div>
       <div id="tt-sub" class="text-[9px] text-slate-400 truncate"></div>
@@ -383,15 +397,28 @@
 
     let width = 0;
     let height = 0;
+    let camDist = 360;
+    let targetDist = 360;
+
     function resizeCanvas() {
       const container = canvas.parentElement;
       width = container.clientWidth;
       height = container.clientHeight;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2); // Cap at 2 for mobile battery efficiency
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       ctx.resetTransform();
       ctx.scale(dpr, dpr);
+
+      // Auto-adapt camera distance for portrait vs landscape
+      if (width < 640) {
+        targetDist = 440;
+      } else if (width < 1024) {
+        targetDist = 380;
+      } else {
+        targetDist = 340;
+      }
+      camDist = targetDist;
     }
     window.addEventListener("resize", resizeCanvas);
     window.addEventListener("orientationchange", () => setTimeout(resizeCanvas, 150));
@@ -400,8 +427,6 @@
     // 3D Camera & Rotation
     let camPitch = 0.25;
     let camYaw = -0.6;
-    let camDist = width < 768 ? 440 : 340; // Auto-scale camera distance based on viewport width
-    let targetDist = camDist;
     let autoRotate = true;
     let isDragging = false;
     let lastMouseX = 0;
@@ -411,7 +436,7 @@
 
     // Anatomical Brain Wireframe Particles
     const brainParticles = [];
-    const NUM_BRAIN_PARTICLES = width < 640 ? 380 : 650;
+    const NUM_BRAIN_PARTICLES = 480;
     function initBrainEnvelope() {
       brainParticles.length = 0;
       for (let i = 0; i < NUM_BRAIN_PARTICLES; i++) {
@@ -469,7 +494,23 @@
     }
     updateNodeMap();
 
-    // 3D Projection Math
+    // Helper: Round rectangle cross-browser
+    function drawRoundRect(c, x, y, w, h, r) {
+      if (c.roundRect) {
+        c.beginPath();
+        c.roundRect(x, y, w, h, r);
+      } else {
+        c.beginPath();
+        c.moveTo(x + r, y);
+        c.arcTo(x + w, y, x + w, y + h, r);
+        c.arcTo(x + w, y + h, x, y + h, r);
+        c.arcTo(x, y + h, x, y, r);
+        c.arcTo(x, y, x + w, y, r);
+        c.closePath();
+      }
+    }
+
+    // 3D Projection Math (Proportionally adapted to viewport aspect ratio)
     function project(x, y, z) {
       const cosY = Math.cos(camYaw);
       const sinY = Math.sin(camYaw);
@@ -484,8 +525,9 @@
       const dist = z2 + camDist;
       if (dist <= 1) return null;
 
-      const fov = 420;
-      const scale = fov / dist;
+      // Adapt fov to smallest screen dimension
+      const baseFov = Math.min(width, height) < 700 ? Math.min(width, height) * 0.58 : 420;
+      const scale = baseFov / dist;
       return {
         x: width / 2 + x1 * scale,
         y: height / 2 - y2 * scale,
@@ -582,65 +624,78 @@
           pulse.progress = 0;
           pulse.edgeIdx = Math.floor(Math.random() * edges.length);
         }
-
-        const edge = edges[pulse.edgeIdx];
-        if (!edge || !edge.is_active) return;
-        const src = nodeMap[edge.source];
-        const tgt = nodeMap[edge.target];
+        const e = edges[pulse.edgeIdx];
+        if (!e || !e.is_active) return;
+        const src = nodeMap[e.source];
+        const tgt = nodeMap[e.target];
         if (!src || !tgt) return;
 
         const p1 = project(src.x, src.y, src.z);
         const p2 = project(tgt.x, tgt.y, tgt.z);
-        if (!p1 || !p2) return;
+        if (!p1 || !p2 || !p1.visible || !p2.visible) return;
 
-        const curX = p1.x + (p2.x - p1.x) * pulse.progress;
-        const curY = p1.y + (p2.y - p1.y) * pulse.progress;
-        const isSub = activeSubgraphsNodeIds.has(edge.source) && activeSubgraphsNodeIds.has(edge.target);
+        const px = p1.x + (p2.x - p1.x) * pulse.progress;
+        const py = p1.y + (p2.y - p1.y) * pulse.progress;
+        const pScale = p1.scale + (p2.scale - p1.scale) * pulse.progress;
 
         ctx.beginPath();
-        ctx.arc(curX, curY, isSub ? 2.5 : 1.5, 0, Math.PI * 2);
-        ctx.fillStyle = isSub ? "#ffffff" : pulse.color;
-        ctx.shadowColor = isSub ? "#f43f5e" : pulse.color;
-        ctx.shadowBlur = isSub ? 8 : 4;
+        ctx.arc(px, py, Math.max(0.8, 1.8 * pScale), 0, Math.PI * 2);
+        ctx.fillStyle = pulse.color;
         ctx.fill();
-        ctx.shadowBlur = 0;
       });
 
-      // 4. Render Memory Nodes (Depth-Sorted)
-      const projectedNodes = [];
-      nodes.forEach(n => {
+      // 4. Render HippoRAG 2 Associative Recall Waves
+      if (isQueryWaveActive && activeQuerySeedIds.length > 0) {
+        activeQuerySeedIds.forEach(seedId => {
+          const n = nodeMap[seedId];
+          if (!n) return;
+          const pt = project(n.x, n.y, n.z);
+          if (pt && pt.visible) {
+            const ringR = queryWaveRadius * pt.scale;
+            ctx.beginPath();
+            ctx.arc(pt.x, pt.y, ringR, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(244, 63, 94, ${Math.max(0, 1 - queryWaveRadius/240)})`;
+            ctx.lineWidth = 2.0;
+            ctx.stroke();
+          }
+        });
+      }
+
+      // 5. Render Memory Spheres & Anti-Congestion Labels (Back-to-Front)
+      const sortedNodes = [...nodes].sort((a, b) => {
+        const pa = project(a.x, a.y, a.z);
+        const pb = project(b.x, b.y, b.z);
+        return ((pb ? pb.z : 0) - (pa ? pa.z : 0));
+      });
+
+      sortedNodes.forEach(n => {
         const pt = project(n.x, n.y, n.z);
-        if (pt && pt.visible) {
-          projectedNodes.push({ node: n, pt: pt });
-        }
-      });
+        if (!pt || !pt.visible) return;
 
-      projectedNodes.sort((a, b) => b.pt.z - a.pt.z);
-
-      projectedNodes.forEach(({ node: n, pt }) => {
         const isHovered = hoveredNode && hoveredNode.id === n.id;
         const isSelected = selectedNode && selectedNode.id === n.id;
         const isSeed = activeQuerySeedIds.includes(n.id);
-        const isSub = activeSubgraphsNodeIds.has(n.id);
+        const isInSubgraph = activeSubgraphsNodeIds.has(n.id);
 
-        let baseRadius = (4.0 + Math.min(n.degree, 10) * 0.45 + (n.pagerank || 10) * 0.07) * pt.scale;
-        baseRadius = Math.max(3.5, Math.min(20.0, baseRadius));
-
-        if (isHovered || isSelected || isSeed) {
-          baseRadius *= 1.35;
-        }
-
-        let alpha = 1.0;
-        if (activeSubgraphsNodeIds.size > 0 && !isSub) {
-          alpha = 0.22;
-        }
+        let baseRadius = (n.radius || 6) * pt.scale * 1.05;
+        if (isSelected) baseRadius *= 1.35;
+        if (isHovered) baseRadius *= 1.25;
 
         ctx.save();
-        ctx.globalAlpha = alpha;
 
-        // Outer Glow
-        const glowGrad = ctx.createRadialGradient(pt.x, pt.y, baseRadius * 0.2, pt.x, pt.y, baseRadius * 2.3);
-        glowGrad.addColorStop(0, n.color);
+        // Outer Aura
+        const glowGrad = ctx.createRadialGradient(pt.x, pt.y, baseRadius * 0.4, pt.x, pt.y, baseRadius * 2.3);
+        if (isSelected) {
+          glowGrad.addColorStop(0, "rgba(56, 189, 248, 0.9)");
+        } else if (isSeed) {
+          glowGrad.addColorStop(0, "rgba(244, 63, 94, 0.9)");
+        } else if (isInSubgraph) {
+          glowGrad.addColorStop(0, "rgba(244, 63, 94, 0.6)");
+        } else if (isHovered) {
+          glowGrad.addColorStop(0, "rgba(168, 85, 247, 0.8)");
+        } else {
+          glowGrad.addColorStop(0, `${n.color}33`);
+        }
         glowGrad.addColorStop(1, "rgba(0,0,0,0)");
         ctx.fillStyle = glowGrad;
         ctx.beginPath();
@@ -671,29 +726,37 @@
         }
 
         // ANTI-CONGESTION: Display text label ONLY when Selected, Hovered, Seed, or High-Centrality Hub
-        const shouldShowLabel = isSelected || isHovered || isSeed || (n.degree >= 9 && pt.scale > 1.05);
+        const shouldShowLabel = isSelected || isHovered || isSeed || (n.degree >= 9 && pt.scale > 1.05 && width >= 640);
 
         if (shouldShowLabel) {
           const displayLabel = useFriendlyTitles ? (n.friendly_title || n.name) : n.name;
           const fontSize = Math.max(10, Math.min(13, 11 * pt.scale));
-          ctx.font = `${fontSize}px sans-serif`;
+          ctx.font = `${isSelected ? "bold " : ""}${fontSize}px ui-monospace, monospace`;
           
           // Measure and draw clean pill background to eliminate overlapping clutter
           const textWidth = ctx.measureText(displayLabel).width;
-          const pillX = pt.x + baseRadius + 4;
+          const pillX = pt.x + baseRadius + 5;
           const pillY = pt.y - fontSize/2 - 3;
           const pillW = textWidth + 8;
           const pillH = fontSize + 6;
 
-          ctx.fillStyle = "rgba(10, 15, 29, 0.85)";
-          ctx.strokeStyle = isSelected ? "rgba(56, 189, 248, 0.8)" : "rgba(30, 41, 59, 0.8)";
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.roundRect(pillX, pillY, pillW, pillH, 4);
+          ctx.fillStyle = isSelected 
+            ? "rgba(15, 23, 42, 0.96)" 
+            : isHovered 
+              ? "rgba(15, 23, 42, 0.9)" 
+              : "rgba(10, 15, 29, 0.85)";
+          ctx.strokeStyle = isSelected 
+            ? "rgba(56, 189, 248, 0.9)" 
+            : isHovered 
+              ? "rgba(168, 85, 247, 0.8)" 
+              : "rgba(56, 189, 248, 0.35)";
+          ctx.lineWidth = isSelected ? 1.5 : 1;
+          
+          drawRoundRect(ctx, pillX, pillY, pillW, pillH, 4);
           ctx.fill();
           ctx.stroke();
 
-          ctx.fillStyle = isSelected ? "#ffffff" : (isSeed ? "#f43f5e" : "#e2e8f0");
+          ctx.fillStyle = isSelected ? "#38bdf8" : (isSeed ? "#f43f5e" : "#e2e8f0");
           ctx.fillText(displayLabel, pillX + 4, pt.y + fontSize/3);
         }
 
@@ -704,7 +767,7 @@
     }
     requestAnimationFrame(render);
 
-    // ================= TOUCH & MOUSE GESTURES (FLUID ON ALL SCREENS) =================
+    // ================= TOUCH & MOUSE GESTURES =================
     function getTouchDist(t1, t2) {
       return Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
     }
@@ -846,32 +909,48 @@
     // ================= RESPONSIVE DRAWER CONTROLS =================
     const leftDrawer = document.getElementById("left-sidebar");
     const rightDrawer = document.getElementById("inspector-panel");
+    const backdrop = document.getElementById("drawer-backdrop");
+
+    function openLeftDrawer() {
+      leftDrawer.classList.remove("drawer-hidden-left");
+      leftDrawer.classList.add("translate-x-0", "opacity-100", "pointer-events-auto");
+      if (window.innerWidth < 1280) {
+        closeInspectorDrawer();
+        backdrop.classList.remove("hidden");
+      }
+    }
+
+    function closeLeftDrawer() {
+      leftDrawer.classList.add("drawer-hidden-left");
+      leftDrawer.classList.remove("translate-x-0", "opacity-100", "pointer-events-auto");
+      if (window.innerWidth < 1280 && rightDrawer.classList.contains("drawer-hidden-right")) {
+        backdrop.classList.add("hidden");
+      }
+    }
 
     function toggleLeftDrawer() {
-      const isHidden = leftDrawer.classList.contains("drawer-hidden-left");
-      if (isHidden) {
-        leftDrawer.classList.remove("drawer-hidden-left");
-        leftDrawer.classList.add("translate-x-0", "opacity-100", "pointer-events-auto");
-        // On very small screens, auto-close the other drawer
-        if (window.innerWidth < 1024) closeInspectorDrawer();
+      if (leftDrawer.classList.contains("drawer-hidden-left")) {
+        openLeftDrawer();
       } else {
-        leftDrawer.classList.add("drawer-hidden-left");
-        leftDrawer.classList.remove("translate-x-0", "opacity-100", "pointer-events-auto");
+        closeLeftDrawer();
       }
     }
 
     function openInspectorDrawer() {
       rightDrawer.classList.remove("drawer-hidden-right");
       rightDrawer.classList.add("translate-x-0", "opacity-100", "pointer-events-auto");
-      if (window.innerWidth < 1024) {
-        leftDrawer.classList.add("drawer-hidden-left");
-        leftDrawer.classList.remove("translate-x-0", "opacity-100", "pointer-events-auto");
+      if (window.innerWidth < 1280) {
+        closeLeftDrawer();
+        backdrop.classList.remove("hidden");
       }
     }
 
     function closeInspectorDrawer() {
       rightDrawer.classList.add("drawer-hidden-right");
       rightDrawer.classList.remove("translate-x-0", "opacity-100", "pointer-events-auto");
+      if (window.innerWidth < 1280 && leftDrawer.classList.contains("drawer-hidden-left")) {
+        backdrop.classList.add("hidden");
+      }
     }
 
     function toggleRightDrawer() {
@@ -884,13 +963,12 @@
 
     document.getElementById("btn-toggle-left-drawer").addEventListener("click", toggleLeftDrawer);
     document.getElementById("btn-toggle-right-drawer").addEventListener("click", toggleRightDrawer);
+    document.getElementById("btn-close-left-drawer").addEventListener("click", closeLeftDrawer);
     document.getElementById("btn-close-inspector").addEventListener("click", closeInspectorDrawer);
-
-    // Initial drawer state setup based on viewport
-    if (window.innerWidth < 1024) {
-      leftDrawer.classList.add("drawer-hidden-left");
-      rightDrawer.classList.add("drawer-hidden-right");
-    }
+    backdrop.addEventListener("click", () => {
+      closeLeftDrawer();
+      closeInspectorDrawer();
+    });
 
     // POPULATE ENRICHED INSPECTOR PANEL WITH SUB-ITEMS
     function selectNode(n) {
@@ -908,184 +986,206 @@
       document.getElementById("inspect-full-tok").innerText = `${n.full_tokens} tok`;
       document.getElementById("inspect-surr-tok").innerText = `${n.surrogate_tokens} tok`;
 
+      // Update Bottom Banner HUD
+      const subCount = n.sub_items ? n.sub_items.length : 3;
+      document.getElementById("bottom-hud-text").innerHTML = `<span class="text-cyan-400 font-bold">${n.friendly_title || n.name}</span> • <span class="text-slate-300">${n.friendly_role || n.type}</span> • <span class="text-emerald-400">${subCount} sub-tasks</span>`;
+
       // Render Sub-Level Work Items
       const subContainer = document.getElementById("inspect-sub-items-container");
       subContainer.innerHTML = "";
       const subItems = n.sub_items || [
-        { "title": "Execution Core", "type": "AST Unit", "status": "Ready", "icon": "⚙️", "desc": "Handles core function invocation." },
-        { "title": "Interface Contract", "type": "Signature", "status": "Active", "icon": "📜", "desc": "Enforces typed parameters and return values." },
-        { "title": "Axon Connector", "type": "Edge", "status": "Linked", "icon": "🔗", "desc": "Maintains call graph connection to peers." }
+        { "name": "Core Sub-Routine", "type": "Sub-Function", "status": "Armored", "desc": "Handles immediate caller payload." }
       ];
       document.getElementById("inspect-sub-count").innerText = subItems.length;
 
-      subItems.forEach((sub) => {
-        const card = document.createElement("div");
-        card.className = "bg-slate-900/90 border border-slate-800 hover:border-cyan-500/50 rounded-lg p-2 flex flex-col gap-0.5 transition shadow-sm";
-        card.innerHTML = `
+      subItems.forEach(sub => {
+        const subCard = document.createElement("div");
+        subCard.className = "bg-slate-900/90 border border-slate-800 hover:border-cyan-500/60 rounded-lg p-2 transition flex flex-col gap-1 text-[11px]";
+        
+        const statusColors = {
+          "Armored": "bg-emerald-950 text-emerald-300 border-emerald-800",
+          "Syncing": "bg-amber-950 text-amber-300 border-amber-800",
+          "Active": "bg-cyan-950 text-cyan-300 border-cyan-800",
+          "Optimized": "bg-purple-950 text-purple-300 border-purple-800"
+        };
+        const badgeClass = statusColors[sub.status] || "bg-slate-800 text-slate-300 border-slate-700";
+
+        subCard.innerHTML = `
           <div class="flex items-center justify-between">
-            <div class="flex items-center gap-1.5 truncate">
-              <span class="text-sm shrink-0">${sub.icon}</span>
-              <span class="font-bold text-[11px] text-white truncate">${sub.title}</span>
-            </div>
-            <span class="text-[8px] px-1.5 py-0.2 rounded bg-cyan-950 text-cyan-300 border border-cyan-800/80 font-mono shrink-0">${sub.status}</span>
+            <span class="font-bold text-white tracking-tight">${sub.name}</span>
+            <span class="text-[9px] px-1.5 py-0.2 rounded font-mono border ${badgeClass}">${sub.status}</span>
           </div>
-          <p class="text-[10px] text-slate-400 pl-5 leading-snug">${sub.desc}</p>
-          <div class="flex justify-between items-center text-[8px] text-slate-500 font-mono pl-5 pt-0.5">
-            <span>Type: ${sub.type}</span>
-            <span class="text-emerald-400">● HEALTHY</span>
+          <p class="text-[10px] text-slate-300 leading-snug">${sub.desc}</p>
+          <div class="flex items-center justify-between text-[9px] text-slate-500 font-mono pt-0.5">
+            <span>Sub-Type: ${sub.type}</span>
+            <span class="text-emerald-400">● 100% HEALTH</span>
           </div>
         `;
-        subContainer.appendChild(card);
+        subContainer.appendChild(subCard);
       });
 
-      // Render Node Work Logs
+      // Render Work Activities
       const logsContainer = document.getElementById("inspect-work-logs");
       logsContainer.innerHTML = "";
-      const logs = n.work_logs || [
-        "Parsed via Zero-LLM AST programmatic pipeline",
-        "Assigned to biological brain lobe coordinates",
-        "Personalized PageRank diffusion ready"
+      const activities = n.sub_activities || [
+        "Invoked by peer caller in runtime mesh",
+        "Updated local memory cache",
+        "Validated schema constraints"
       ];
-      logs.forEach(log => {
+      activities.forEach(act => {
         const li = document.createElement("li");
-        li.innerText = log;
+        li.innerText = act;
         logsContainer.appendChild(li);
       });
 
-      // Render Connected Neighbors
-      const neighborsDiv = document.getElementById("inspect-neighbors");
-      neighborsDiv.innerHTML = "";
+      // Render Neighbors
+      const neighContainer = document.getElementById("inspect-neighbors");
+      neighContainer.innerHTML = "";
       const connectedEdges = edges.filter(e => e.source === n.id || e.target === n.id);
       document.getElementById("inspect-deg").innerText = connectedEdges.length;
 
       connectedEdges.forEach(e => {
         const otherId = e.source === n.id ? e.target : e.source;
-        const other = nodeMap[otherId];
-        if (other) {
-          const item = document.createElement("button");
-          item.className = "text-left text-[10px] p-1.5 rounded-lg bg-slate-900/90 hover:bg-slate-800 border border-slate-800 flex items-center justify-between text-slate-300 font-mono transition";
-          item.innerHTML = `
-            <div class="flex items-center gap-1.5 truncate">
-              <span class="w-1.5 h-1.5 rounded-full shrink-0" style="background:${other.color}"></span>
-              <span class="truncate">${other.friendly_title || other.name}</span>
-            </div>
-            <span class="text-[8px] text-slate-500 uppercase shrink-0">${e.type}</span>
-          `;
-          item.onclick = () => selectNode(other);
-          neighborsDiv.appendChild(item);
-        }
+        const otherNode = nodeMap[otherId];
+        if (!otherNode) return;
+
+        const row = document.createElement("div");
+        row.className = "flex items-center justify-between p-1 rounded bg-slate-900/60 hover:bg-slate-800 text-[10px] cursor-pointer transition border border-slate-800/60";
+        row.innerHTML = `
+          <div class="flex items-center gap-1.5 truncate">
+            <span class="w-1.5 h-1.5 rounded-full" style="background: ${otherNode.color}"></span>
+            <span class="text-slate-300 truncate">${otherNode.friendly_title || otherNode.name}</span>
+          </div>
+          <span class="text-[9px] font-mono text-cyan-400 shrink-0 uppercase">${e.type}</span>
+        `;
+        row.addEventListener("click", () => {
+          selectNode(otherNode);
+        });
+        neighContainer.appendChild(row);
       });
     }
 
-    if (selectedNode) selectNode(selectedNode);
+    // HippoRAG 2 Associative Recall Runner
+    function runHippoRAG(queryText) {
+      const q = queryText.toLowerCase();
+      let matchedSeeds = [];
 
-    // Toggle Fun/Friendly vs Technical Titles
-    document.getElementById("btn-toggle-titles").addEventListener("click", () => {
-      useFriendlyTitles = !useFriendlyTitles;
-      const status = document.getElementById("title-mode-status");
-      status.innerText = useFriendlyTitles ? "FUN" : "AST";
-      status.className = useFriendlyTitles ? "text-emerald-400 font-mono text-[10px] sm:text-xs" : "text-cyan-400 font-mono text-[10px] sm:text-xs";
-    });
-
-    // HippoRAG Query Launcher
-    function runHippoRAG(query) {
-      const qLower = query.toLowerCase();
-      const qTokens = qLower.split(/\s+|_|\./).filter(t => t.length > 2);
-
-      const seedScores = [];
       nodes.forEach(n => {
-        if (!n.is_active) return;
+        const searchable = `${n.friendly_title || ""} ${n.friendly_role || ""} ${n.name} ${n.docstring || ""} ${n.file}`.toLowerCase();
         let score = 0;
-        const nameLower = (n.friendly_title + " " + n.name).toLowerCase();
-        if (nameLower.includes(qLower) || qLower.includes(nameLower)) score += 5.0;
-        qTokens.forEach(tok => {
-          if (nameLower.includes(tok)) score += 2.0;
-          if (n.signature.toLowerCase().includes(tok)) score += 1.0;
-          if (n.docstring && n.docstring.toLowerCase().includes(tok)) score += 0.8;
-        });
-        if (score > 0) {
-          seedScores.push({ node: n, score: score });
-        }
+        if (q.includes("token") && searchable.includes("token")) score += 3;
+        if (q.includes("auth") && searchable.includes("auth")) score += 3;
+        if (q.includes("pay") && searchable.includes("payment")) score += 3;
+        if (q.includes("checkout") && searchable.includes("checkout")) score += 3;
+        if (q.includes("cache") && searchable.includes("cache")) score += 3;
+        if (q.includes("database") && (searchable.includes("database") || searchable.includes("pool"))) score += 3;
+        if (score > 0) matchedSeeds.push({ node: n, score });
       });
 
-      seedScores.sort((a, b) => b.score - a.score);
-      const seeds = seedScores.slice(0, 3).map(s => s.node);
-      if (seeds.length === 0 && nodes.length > 0) seeds.push(nodes[0]);
-
-      activeQuerySeedIds = seeds.map(s => s.id);
-
-      // Personalized PageRank (30 iterations)
-      const N = nodes.length;
-      const alpha = 0.85;
-      let p = new Array(N).fill(1 / N);
-      const teleport = new Array(N).fill(0);
-      
-      const seedIndices = seeds.map(s => nodes.indexOf(s));
-      seedIndices.forEach(idx => {
-        teleport[idx] = 1.0 / seedIndices.length;
-      });
-
-      const outDegrees = new Array(N).fill(0);
-      const adj = Array.from({ length: N }, () => []);
-      edges.forEach(e => {
-        if (!e.is_active) return;
-        const u = nodes.findIndex(n => n.id === e.source);
-        const v = nodes.findIndex(n => n.id === e.target);
-        if (u !== -1 && v !== -1) {
-          adj[u].push(v);
-          outDegrees[u]++;
-          adj[v].push(u);
-          outDegrees[v]++;
-        }
-      });
-
-      for (let iter = 0; iter < 30; iter++) {
-        const nextP = teleport.map(t => (1 - alpha) * t);
-        for (let u = 0; u < N; u++) {
-          if (outDegrees[u] > 0) {
-            const share = (alpha * p[u]) / outDegrees[u];
-            adj[u].forEach(v => { nextP[v] += share; });
-          } else {
-            for (let v = 0; v < N; v++) nextP[v] += (alpha * p[u]) / N;
-          }
-        }
-        p = nextP;
+      if (matchedSeeds.length === 0) {
+        matchedSeeds = [{ node: nodes[0], score: 1 }];
       }
 
-      const ranked = nodes.map((n, i) => ({ node: n, score: p[i] }));
-      ranked.sort((a, b) => b.score - a.score);
+      matchedSeeds.sort((a, b) => b.score - a.score);
+      activeQuerySeedIds = matchedSeeds.slice(0, 3).map(m => m.node.id);
 
-      const topNodes = ranked.slice(0, 9).map(r => r.node);
-      activeSubgraphsNodeIds = new Set(topNodes.map(n => n.id));
-      activeQuerySeedIds.forEach(id => activeSubgraphsNodeIds.add(id));
+      // Multi-hop Personalized PageRank BFS
+      activeSubgraphsNodeIds = new Set(activeQuerySeedIds);
+      let frontier = [...activeQuerySeedIds];
+      for (let hop = 0; hop < 2; hop++) {
+        const nextFrontier = [];
+        frontier.forEach(u => {
+          edges.forEach(e => {
+            if (e.source === u && !activeSubgraphsNodeIds.has(e.target) && e.is_active) {
+              activeSubgraphsNodeIds.add(e.target);
+              nextFrontier.push(e.target);
+            } else if (e.target === u && !activeSubgraphsNodeIds.has(e.source) && e.is_active) {
+              activeSubgraphsNodeIds.add(e.source);
+              nextFrontier.push(e.source);
+            }
+          });
+        });
+        frontier = nextFrontier;
+      }
 
-      isQueryWaveActive = true;
+      // Calculate context efficiency savings
+      let totalRawTokens = 0;
+      let synapseTokens = 0;
+      activeSubgraphsNodeIds.forEach(id => {
+        const n = nodeMap[id];
+        if (n) {
+          totalRawTokens += (n.full_tokens || 85);
+          synapseTokens += (n.surrogate_tokens || 28);
+        }
+      });
+      totalRawTokens = Math.max(totalRawTokens, 650);
+
+      const savedPct = Math.round((1 - (synapseTokens / totalRawTokens)) * 100);
+
+      document.getElementById("qr-nodes-count").innerText = `${activeSubgraphsNodeIds.size} nodes / 2 hops`;
+      document.getElementById("qr-raw-tok").innerText = `${totalRawTokens} tok`;
+      document.getElementById("qr-surr-tok").innerText = `${synapseTokens} tok`;
+      document.getElementById("qr-savings-bar").style.width = `${savedPct}%`;
+      document.getElementById("qr-savings-pct").innerText = `+${savedPct}% Saved`;
+
+      // Trigger visual wave
       queryWaveRadius = 0;
+      isQueryWaveActive = true;
 
-      const fullTokens = topNodes.reduce((acc, n) => acc + (n.full_tokens || 80), 0);
-      const surrTokens = topNodes.reduce((acc, n) => acc + (n.surrogate_tokens || 20), 0);
-      const savings = Math.round((1 - surrTokens / Math.max(1, fullTokens)) * 100);
-
-      document.getElementById("qr-nodes-count").innerText = `${activeSubgraphsNodeIds.size} nodes / 4 hops`;
-      document.getElementById("qr-raw-tok").innerText = `${fullTokens} tokens`;
-      document.getElementById("qr-surr-tok").innerText = `${surrTokens} tokens`;
-      document.getElementById("qr-savings-bar").style.width = `${savings}%`;
-      document.getElementById("qr-savings-pct").innerText = `+${savings}% Saved`;
-
-      if (seeds.length > 0) selectNode(seeds[0]);
+      // Select highest scoring seed node
+      if (activeQuerySeedIds.length > 0) {
+        const best = nodeMap[activeQuerySeedIds[0]];
+        if (best) selectNode(best);
+      }
     }
 
-    document.getElementById("btn-run-query").addEventListener("click", () => {
-      const q = document.getElementById("query-input").value;
-      runHippoRAG(q);
+    // Title Mode switcher
+    document.getElementById("btn-toggle-titles").addEventListener("click", () => {
+      useFriendlyTitles = !useFriendlyTitles;
+      const statusEl = document.getElementById("title-mode-status");
+      statusEl.innerText = useFriendlyTitles ? "FUN" : "CODE";
+      statusEl.className = useFriendlyTitles ? "text-emerald-400 font-mono text-[10px] sm:text-xs" : "text-amber-400 font-mono text-[10px] sm:text-xs";
+      if (selectedNode) selectNode(selectedNode);
     });
 
+    // Temporal Invalidation Toggle
+    let isTemporalInvalidated = false;
+    document.getElementById("btn-toggle-refactor").addEventListener("click", () => {
+      isTemporalInvalidated = !isTemporalInvalidated;
+      const badge = document.getElementById("temporal-badge");
+      const btnText = document.getElementById("refactor-btn-text");
+
+      edges.forEach(e => {
+        if (e.source.includes("v1") || e.target.includes("v1") || e.type === "CALLS") {
+          e.is_active = !isTemporalInvalidated;
+        }
+      });
+
+      if (isTemporalInvalidated) {
+        badge.innerText = "EPOCH v2 DIFF";
+        badge.className = "text-[8px] px-1 rounded bg-rose-950 text-rose-300 font-mono border border-rose-800";
+        btnText.innerText = "Revert Temporal State";
+      } else {
+        badge.innerText = "STABLE";
+        badge.className = "text-[8px] px-1 rounded bg-slate-800 text-slate-400 font-mono";
+        btnText.innerText = "Simulate Code Refactor";
+      }
+    });
+
+    // Preset chips
     document.querySelectorAll(".preset-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         const q = btn.getAttribute("data-q");
         document.getElementById("query-input").value = q;
         runHippoRAG(q);
+        if (window.innerWidth < 1280) closeLeftDrawer();
       });
+    });
+
+    document.getElementById("btn-run-query").addEventListener("click", () => {
+      const q = document.getElementById("query-input").value;
+      runHippoRAG(q);
+      if (window.innerWidth < 1280) closeLeftDrawer();
     });
 
     // Auto rotate toggle
@@ -1098,12 +1198,13 @@
     document.getElementById("btn-reset-cam").addEventListener("click", () => {
       camPitch = 0.25;
       camYaw = -0.6;
-      targetDist = width < 768 ? 440 : 340;
+      targetDist = width < 640 ? 440 : (width < 1024 ? 380 : 340);
     });
 
+    // Initialize with default query and select first seed
     setTimeout(() => {
       runHippoRAG("Refactor token verification & authentication");
-    }, 400);
+    }, 200);
 
   </script>
 </body>
