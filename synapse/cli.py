@@ -11,6 +11,15 @@ import hashlib
 import time
 from typing import Dict, Any, List
 
+# Ensure safe UTF-8 output on Windows consoles
+try:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    if hasattr(sys.stderr, "reconfigure"):
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+except Exception:
+    pass
+
 # Ensure synapse_graph package path is accessible
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 PARENT_DIR = os.path.dirname(CURRENT_DIR)
@@ -125,7 +134,13 @@ def generate_project_visualizer(project_dir: str, graph_data: dict):
     html_path = os.path.join(synapse_dir, "brain_memory.html")
 
     graph_json_str = json.dumps(graph_data)
-    template_path = "/home/antigravity/.gemini/jetski/brain/v1/default/jetski_remote_agents_3p/6086e0b3-3e8c-4628-ad3f-93f16cd0d5e9/brain_memory_visualizer.html"
+    candidates = [
+        os.path.join(PARENT_DIR, "visualizer", "index.html"),
+        os.path.join(CURRENT_DIR, "visualizer", "index.html")
+    ]
+    template_path = next((c for c in candidates if os.path.exists(c)), None)
+    if not template_path:
+        return
 
     try:
         with open(template_path, "r", encoding="utf-8") as bf:
@@ -134,7 +149,7 @@ def generate_project_visualizer(project_dir: str, graph_data: dict):
         import re
         html_custom = re.sub(
             r'const INITIAL_GRAPH_DATA = \{.*?\};',
-            f'const INITIAL_GRAPH_DATA = {graph_json_str};',
+            lambda _: f'const INITIAL_GRAPH_DATA = {graph_json_str};',
             html_content,
             flags=re.DOTALL
         )

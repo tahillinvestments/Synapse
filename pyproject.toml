@@ -26,6 +26,9 @@ keywords = ["ai-memory", "knowledge-graph", "code-intelligence", "graphrag", "hi
 requires-python = ">=3.10"
 dependencies = []
 
+[tool.setuptools.packages.find]
+include = ["synapse*"]
+
 [project.optional-dependencies]
 accelerated = [
     "networkx>=3.0",
